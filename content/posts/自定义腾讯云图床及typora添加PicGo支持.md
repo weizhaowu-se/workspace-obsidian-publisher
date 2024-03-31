@@ -39,7 +39,7 @@ share: "true"
 * [下载安装地址](https://picgo.github.io/PicGo-Doc/zh/guide/)
 * 根据cos上获取相关信息，其中SecretId、SecretKey和AppId在`个人中心-访问管理`可以获取，其他cos的信息可以在cos上查询获取
 
-![attachments/818ae4068ecf65ec995d89252b371075_MD5.png](../../static/images/818ae4068ecf65ec995d89252b371075_MD5.png)
+![818ae4068ecf65ec995d89252b371075_MD5.png](attachments/818ae4068ecf65ec995d89252b371075_MD5.png)
 
 ### 配置typora
 
@@ -51,7 +51,7 @@ share: "true"
 
 由于刚好有一台腾讯云服务器，而通过内网访问时不计算流量费用
 
-![attachments/9a46ecf02837ba7c4aa02e46329b0d02_MD5.png](../../static/images/9a46ecf02837ba7c4aa02e46329b0d02_MD5.png)
+![9a46ecf02837ba7c4aa02e46329b0d02_MD5.png](attachments/9a46ecf02837ba7c4aa02e46329b0d02_MD5.png)
 
 所以在服务器上配置了一下nginx的反向代理就实现了通过内网访问oss图片
 
