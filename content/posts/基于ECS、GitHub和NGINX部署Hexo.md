@@ -54,3 +54,4 @@ sudo yum -y install nginx   # 安装 nginx
 
 此时访问nginx页面就可以查看到新编写的文章了
 
+
