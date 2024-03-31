@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Git on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/git/</link>
+    <description>Recent content in Git on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Thu, 13 Apr 2017 12:52:29 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vps&#43;git&#43;hexo&#43;nginx搭建博客网站</title>
+      <link>https://blog.wuweizhao.com/posts/vps-git-hexo-nginx%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Thu, 13 Apr 2017 12:52:29 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/vps-git-hexo-nginx%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid>
+      <description>&lt;h1 id=&#34;vpsgithexonginx搭建博客网站&#34;&gt;vps+git+hexo+nginx搭建博客网站&lt;/h1&gt;
+&lt;p&gt;由于科学上网的需要，买了一个vps，想着单单用来ss似乎不太值，所以就想说搭建一个简单的博客系统，wordpress比较繁杂，所以就采用了这样的一个方式来搭建博客：git+hexo（主题：next）+nginx，实现思路大概是这样子的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在本地windows上搭建hexo，编写博客之后hexo generate，生成html文件&lt;/li&gt;
+&lt;li&gt;在vps上搭建git服务器，nginx服务&lt;/li&gt;
+&lt;li&gt;将本地html文件更新到服务器上&lt;/li&gt;
+&lt;li&gt;使用git hook功能将服务器git目录更新到网页文件上&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

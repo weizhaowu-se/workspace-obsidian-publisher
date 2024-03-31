@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>设计模式 on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Wed, 26 Oct 2016 13:35:40 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java中的单例模式</title>
+      <link>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 26 Oct 2016 13:35:40 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;h1 id=&#34;java中的单例模式&#34;&gt;Java中的单例模式&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;多线程中可能会导致对象的多次初始化.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;懒汉式的实现&#34;&gt;懒汉式的实现&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;之所以成为懒汉,个人认为应该是类的初始化只在需要的时候进行,所以很&amp;quot;懒&amp;quot;.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

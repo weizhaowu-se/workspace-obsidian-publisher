@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Http on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/http/</link>
+    <description>Recent content in Http on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Tue, 14 Nov 2017 20:35:48 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>跨域请求</title>
+      <link>https://blog.wuweizhao.com/posts/%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Tue, 14 Nov 2017 20:35:48 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/</guid>
+      <description>&lt;h1 id=&#34;跨域资源请求cors&#34;&gt;跨域资源请求CORS&lt;/h1&gt;
+&lt;h2 id=&#34;1什么是跨域资源请求&#34;&gt;1.什么是跨域资源请求&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;通常情况下,我们访问一个网站的过程如下:
+&lt;ul&gt;
+&lt;li&gt;访问页面example.com,加载页面html以及js&lt;/li&gt;
+&lt;li&gt;对页面进行一些操作,由js通过ajax访问后台,进行页面的更新.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;一般情况下,通过ajax调用后台是同源的,同源指的是:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;协议相同&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;端口号相同&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;地址相同&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;但是有时候通过js请求非同源的后台服务,这个时候就是属于跨域资源请求了&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

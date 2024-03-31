@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>一亩三分地</title>
+    <link>https://blog.wuweizhao.com/</link>
+    <description>Recent content on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Sat, 30 Mar 2024 23:29:33 +0800</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>https://blog.wuweizhao.com/posts/my-first-post/</link>
+      <pubDate>Sat, 30 Mar 2024 23:29:33 +0800</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/my-first-post/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>给自己的博客网站加把锁（SSL）</title>
+      <link>https://blog.wuweizhao.com/posts/%E7%BB%99%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E9%94%81ssl/</link>
+      <pubDate>Thu, 13 Oct 2022 20:14:31 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E7%BB%99%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%8A%A0%E6%8A%8A%E9%94%81ssl/</guid>
+      <description>&lt;h1 id=&#34;实现效果&#34;&gt;实现效果&lt;/h1&gt;
+&lt;p&gt;![[history/attachments/816457491986d87dbf0c88b57095f56c_MD5.png]]&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>基于ECS、GitHub和NGINX部署Hexo</title>
+      <link>https://blog.wuweizhao.com/posts/%E5%9F%BA%E4%BA%8Eecsgithub%E5%92%8Cnginx%E9%83%A8%E7%BD%B2hexo/</link>
+      <pubDate>Thu, 13 Oct 2022 19:41:57 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E5%9F%BA%E4%BA%8Eecsgithub%E5%92%8Cnginx%E9%83%A8%E7%BD%B2hexo/</guid>
+      <description>&lt;h1 id=&#34;整體流程圖&#34;&gt;整體流程圖&lt;/h1&gt;
+&lt;p&gt;![[history/attachments/79a72c7f2c1f7993f53385fa049ae1d2_MD5.png]]&lt;/p&gt;
+&lt;p&gt;要点说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;博客的文章是以md文件的形式存放在目录  source\_post 下的&lt;/li&gt;
+&lt;li&gt;hexo g -d命令可以在public目录下生成网站的静态页面（html文件）&lt;/li&gt;
+&lt;li&gt;nginx可以作为静态网站的容器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;ecs&#34;&gt;ECS&lt;/h1&gt;
+&lt;h2 id=&#34;hexo部署并配置next主题&#34;&gt;hexo部署并配置next主题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://hexo.io/zh-cn/docs/index.html&#34;&gt;hexo官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://theme-next.js.org/&#34;&gt;next主题官方网站&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/next-theme/hexo-theme-next&#34;&gt;next主题github地址&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>hexo建站系列</title>
+      <link>https://blog.wuweizhao.com/posts/hexo%E5%BB%BA%E7%AB%99%E7%B3%BB%E5%88%97/</link>
+      <pubDate>Wed, 12 Oct 2022 20:13:29 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/hexo%E5%BB%BA%E7%AB%99%E7%B3%BB%E5%88%97/</guid>
+      <description> 基于ECS、GitHub和NGINX部署Hexo 使用webhook实现hexo的自动部署 自定义腾讯云图床及typora添加PicGo支持 给自己的博客网站加把锁（SSL） hexo添加浏览量支持 </description>
+    </item>
+    <item>
+      <title>hexo添加浏览量支持</title>
+      <link>https://blog.wuweizhao.com/posts/hexo%E6%B7%BB%E5%8A%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E6%94%AF%E6%8C%81/</link>
+      <pubDate>Mon, 10 Oct 2022 20:19:35 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/hexo%E6%B7%BB%E5%8A%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E6%94%AF%E6%8C%81/</guid>
+      <description>参考文档 http://ibruce.info/2015/04/04/busuanzi/
+修改文件 /themes/next/layout/_partials/footer.swig
+添加内容 &amp;lt;script async src=&amp;#34;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&amp;#34;&amp;gt; &amp;lt;/script&amp;gt; 本站总访问量&amp;lt;span id=&amp;#34;busuanzi_value_site_pv&amp;#34;&amp;gt;&amp;lt;/span&amp;gt;次 本站访客数&amp;lt;span id=&amp;#34;busuanzi_value_site_uv&amp;#34;&amp;gt;&amp;lt;/span&amp;gt;人次 实现效果 ![[history/attachments/ebe17135db71431eeb05ae56aaf130d1_MD5.png]]
+遗留 单页面访问量显示 数据初始化 </description>
+    </item>
+    <item>
+      <title>自定义腾讯云图床及typora添加PicGo支持</title>
+      <link>https://blog.wuweizhao.com/posts/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%85%BE%E8%AE%AF%E4%BA%91%E5%9B%BE%E5%BA%8A%E5%8F%8Atypora%E6%B7%BB%E5%8A%A0picgo%E6%94%AF%E6%8C%81/</link>
+      <pubDate>Mon, 10 Oct 2022 20:19:09 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%85%BE%E8%AE%AF%E4%BA%91%E5%9B%BE%E5%BA%8A%E5%8F%8Atypora%E6%B7%BB%E5%8A%A0picgo%E6%94%AF%E6%8C%81/</guid>
+      <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;使用markdown时，总是需要有贴上图片的场景，一般情况下有以下几种方式可以解决：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;实现方式&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;链接到本地文件&lt;/td&gt;
+&lt;td&gt;发布到在线博客等的场景下不适用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;将文件转成base64&lt;/td&gt;
+&lt;td&gt;较为麻烦，需要借助一些工具进行转码；&lt;!-- raw HTML omitted --&gt;阅读上需要借助一些工具，否则会造成可读性降低&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;使用在线公有图床（如新浪图床、github等）&lt;/td&gt;
+&lt;td&gt;不稳定 ，如果公有图床启用了防盗链或者其他工具的话，&lt;!-- raw HTML omitted --&gt;会导致无法访问&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;使用腾讯云存储可以解决以上问题，唯一的缺点可能就是要收费吧&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>使用webhook实现hexo的自动部署</title>
+      <link>https://blog.wuweizhao.com/posts/%E4%BD%BF%E7%94%A8webhook%E5%AE%9E%E7%8E%B0hexo%E7%9A%84%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Sun, 09 Oct 2022 22:18:33 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E4%BD%BF%E7%94%A8webhook%E5%AE%9E%E7%8E%B0hexo%E7%9A%84%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</guid>
+      <description>&lt;h1 id=&#34;整体流程图&#34;&gt;整体流程图&lt;/h1&gt;
+&lt;p&gt;![[history/attachments/b941e20b22c8cfe8819b07a445d7601f_MD5.png]]&lt;/p&gt;
+&lt;h1 id=&#34;分步骤&#34;&gt;分步骤&lt;/h1&gt;
+&lt;h2 id=&#34;git-push推送&#34;&gt;git push推送&lt;/h2&gt;
+&lt;p&gt;此处略去&lt;/p&gt;
+&lt;h2 id=&#34;调用接口通知&#34;&gt;调用接口通知&lt;/h2&gt;
+&lt;p&gt;此部分为最核心的部分内容，主要分为两块内容&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在服务器上启动server，接收来自github更新时候的调用（即webhook）&lt;/li&gt;
+&lt;li&gt;配置github上的webhook&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Centos设置定时任务及查看执行日志</title>
+      <link>https://blog.wuweizhao.com/posts/centos%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8F%8A%E6%9F%A5%E7%9C%8B%E6%89%A7%E8%A1%8C%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Sat, 08 Oct 2022 22:52:22 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/centos%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8F%8A%E6%9F%A5%E7%9C%8B%E6%89%A7%E8%A1%8C%E6%97%A5%E5%BF%97/</guid>
+      <description>背景 服务器（centos）部署了nginx + hexo的组合 本地windows编写hexo博客 hexo博客源数据托管在github上 想要实现效果：
+本地新增博客源文件（md文件），提交到github上 centos服务器能够定时拉取代码并更新nginx网站文件 具体流程 此处略去配置github之ssh秘钥等步骤
+执行脚本编写 在目录 /etc/cron.daily/新增文件 hexoUpdate.sh即可（注意添加可执行权限 chmod +x hexoUpdate.sh）
+#!/bin/bash cd /root/new-hexo &amp;amp;&amp;amp; git pull &amp;amp;&amp;amp; hexo g -d 此处目录/root/new-hexo 修改为对应的hexo主目录 关于cron.daily文件夹下的脚本及执行时间说明可自行上网查看。
+执行日志查看 vi /var/log/cron 延伸 可以通过Git的hook实现提交代码之后自动执行脚本</description>
+    </item>
+    <item>
+      <title>mysql中CST时区的问题</title>
+      <link>https://blog.wuweizhao.com/posts/mysql%E4%B8%ADcst%E6%97%B6%E5%8C%BA%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 28 Sep 2022 22:22:10 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mysql%E4%B8%ADcst%E6%97%B6%E5%8C%BA%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>testtesttesteeeesss
+eeed
+ccccccccccc</description>
+    </item>
+    <item>
+      <title>docker安装fastdfs及设置远程访问</title>
+      <link>https://blog.wuweizhao.com/posts/docker%E5%AE%89%E8%A3%85fastdfs%E5%8F%8A%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Mon, 28 Dec 2020 22:22:13 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/docker%E5%AE%89%E8%A3%85fastdfs%E5%8F%8A%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/</guid>
+      <description>&lt;h2 id=&#34;fastdfs说明&#34;&gt;fastdfs说明&lt;/h2&gt;
+&lt;p&gt;1: FastDFS架构包括 Tracker server和Storage server。客户端请求Tracker server进行文件上传、下载，通过Tracker server调度最终由Storage server完成文件上传和下载。
+2: Tracker server作用是负载均衡和调度，通过Tracker server在文件上传时可以根据一些策略找到Storage server提供文件上传服务。可以将tracker称为追踪服务器或调度服务器。
+3: Storage server作用是文件存储，客户端上传的文件最终存储在Storage服务器上，Storage server没有实现自己的文件系统而是利用操作系统 的文件系统来管理文件。可以将storage称为存储服务器。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>centos定时备份mysql数据库</title>
+      <link>https://blog.wuweizhao.com/posts/centos%E5%AE%9A%E6%97%B6%E5%A4%87%E4%BB%BDmysql%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Fri, 09 Oct 2020 22:40:01 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/centos%E5%AE%9A%E6%97%B6%E5%A4%87%E4%BB%BDmysql%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <description>&lt;h2 id=&#34;centos定时备份mysql数据库&#34;&gt;centos定时备份mysql数据库&lt;/h2&gt;
+&lt;p&gt;最重要的两个工具&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mysqldump&lt;/li&gt;
+&lt;li&gt;crontab&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>centos安装mysql-8</title>
+      <link>https://blog.wuweizhao.com/posts/centos%E5%AE%89%E8%A3%85mysql-8/</link>
+      <pubDate>Fri, 09 Oct 2020 22:39:37 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/centos%E5%AE%89%E8%A3%85mysql-8/</guid>
+      <description>&lt;h1 id=&#34;centos安装mysql-8&#34;&gt;centos安装mysql-8&lt;/h1&gt;
+&lt;p&gt;前景说明：通过安装mysql-8，在centos上连接云上的数据库，而非部署mysql服务端&lt;/p&gt;
+&lt;p&gt;试用场景：云上数据库配置了ip白名单，只能通过centos服务器进行访问的情况&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>自定义注解在项目中的应用</title>
+      <link>https://blog.wuweizhao.com/posts/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Mon, 05 Oct 2020 19:38:27 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+      <description>&lt;h2 id=&#34;什么是注解&#34;&gt;什么是注解&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;@Target({ElementType.METHOD,ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface TestAnnoation {
+		int value() default 0;
+		String word() default &amp;#34;word&amp;#34;;
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>docker搭建minio及永久有效链接配置</title>
+      <link>https://blog.wuweizhao.com/posts/docker%E6%90%AD%E5%BB%BAminio%E5%8F%8A%E6%B0%B8%E4%B9%85%E6%9C%89%E6%95%88%E9%93%BE%E6%8E%A5%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 27 Sep 2020 22:41:09 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/docker%E6%90%AD%E5%BB%BAminio%E5%8F%8A%E6%B0%B8%E4%B9%85%E6%9C%89%E6%95%88%E9%93%BE%E6%8E%A5%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;h3 id=&#34;minio部署&#34;&gt;minio部署&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;拉取镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker pull minio/minio
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;创建本地数据目录及配置文件目录&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/home/minio-data/data
+/home/minio-data/config
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;启动minio&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run -p 9000:9000 --name minio \
+-d --restart=always \
+-e &amp;#34;MINIO_ACCESS_KEY=aaaaa&amp;#34; \
+-e &amp;#34;MINIO_SECRET_KEY=bbbbb&amp;#34; \
+-v /home/minio-data/data:/data \
+-v /home/minio-data/config:/root/.minio \
+minio/minio server /data
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>代理模式及java中的代理实现</title>
+      <link>https://blog.wuweizhao.com/posts/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%8F%8Ajava%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Fri, 04 Sep 2020 19:50:54 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%8F%8Ajava%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;h2 id=&#34;什么是代理模式&#34;&gt;什么是代理模式&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Use of the proxy can simply be forwarding to the real object, or can provide additional logic.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;​	简单来讲，火车票代售点就是一个代理模式的最好体现，我们通过代售点购买火车票，同时代售点会对我们的购买行为附加上额外的逻辑（比如说代购费）。&lt;/p&gt;
+&lt;p&gt;代理对象的作用有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;代理对象存在的价值主要用于拦截对真实业务对象的访问；&lt;/li&gt;
+&lt;li&gt;代理对象具有和目标对象(真实业务对象)实现共同的接口或继承于同一个类；&lt;/li&gt;
+&lt;li&gt;代理对象是对目标对象的增强，以便对消息进行预处理和后处理。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>minio时间问题及docker时区修改</title>
+      <link>https://blog.wuweizhao.com/posts/minio%E6%97%B6%E9%97%B4%E9%97%AE%E9%A2%98%E5%8F%8Adocker%E6%97%B6%E5%8C%BA%E4%BF%AE%E6%94%B9/</link>
+      <pubDate>Tue, 01 Sep 2020 21:24:13 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/minio%E6%97%B6%E9%97%B4%E9%97%AE%E9%A2%98%E5%8F%8Adocker%E6%97%B6%E5%8C%BA%E4%BF%AE%E6%94%B9/</guid>
+      <description>minio时间问题及docker时区修改 问题描述 The difference between the request time and the current time is too large
+问题背景 通过docker部署的minio 通过docker部署的springboot应用 centos - 7.5 解决方式 修改容器的时区 minio是通过docker run命令启动的，所以只需要添加下启动参数-v /etc/localtime:/etc/localtime即可（这一步是将容器的时区和宿主机的时区设置为一致） springboot是通过DockerFile打包启动的，在DockerFile中添加RUN ln -sf /usr/share/zoneinfo/Asia/ShangHai /etc/localtime即可 在修改完时区之后，可以通过命令 date -R查看具体时间和时区 注意，在时区一致的情况下，如果宿主机的时间有错的话，也会导致不能够解决问题，这个时候我们需要修改宿主机的时间，有两种方式进行修改 date -s &#39;2020-09-01 00:00:00&#39; 或者通过其他在线的时钟同步方式进行时间同步 </description>
+    </item>
+    <item>
+      <title>elasticsearch之文本导入及拼音搜索实现</title>
+      <link>https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sun, 16 Aug 2020 11:08:16 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;h1 id=&#34;elasticsearch之文本导入及拼音搜索实现&#34;&gt;elasticsearch之文本导入及拼音搜索实现&lt;/h1&gt;
+&lt;p&gt;需求：非结构化数据（word，pdf等文档）导入es，实现全文检索的功能（包括拼音检索功能）&lt;/p&gt;
+&lt;p&gt;本文会先从非结构化数据导入es，还有拼音搜索的实现，以及最后两者的联合应用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本文基于es版本6.8.0&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>mysql-binlog之主从同步</title>
+      <link>https://blog.wuweizhao.com/posts/mysql-binlog%E4%B9%8B%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Wed, 17 Jun 2020 23:55:08 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mysql-binlog%E4%B9%8B%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</guid>
+      <description>&lt;h1 id=&#34;mysql-binlog之主从同步&#34;&gt;mysql-binlog之主从同步&lt;/h1&gt;
+&lt;p&gt;基于上一篇我们已经在本地环境安装了两个mysql，这里我们来进行简单的配置来实现基于binlog的主从复制。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>docker安装mysql-5.7</title>
+      <link>https://blog.wuweizhao.com/posts/docker%E5%AE%89%E8%A3%85mysql-5-7/</link>
+      <pubDate>Wed, 17 Jun 2020 23:33:58 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/docker%E5%AE%89%E8%A3%85mysql-5-7/</guid>
+      <description>&lt;h1 id=&#34;docker安装mysql-57&#34;&gt;docker安装mysql-5.7&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;拉取镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker pull mysql:5.7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;拉取成功&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlgy1gfvpkx6g6qj31yq04c3zb.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>mac下docker修改国内镜像源</title>
+      <link>https://blog.wuweizhao.com/posts/mac%E4%B8%8Bdocker%E4%BF%AE%E6%94%B9%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+      <pubDate>Wed, 17 Jun 2020 23:31:33 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mac%E4%B8%8Bdocker%E4%BF%AE%E6%94%B9%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+      <description>mac下docker修改国内镜像源 打开Preferences配置 打开配置项 新增如下配置 &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://md4nbj2f.mirror.aliyuncs.com&amp;#34;] </description>
+    </item>
+    <item>
+      <title>ThreadLocal及在多线程中使用</title>
+      <link>https://blog.wuweizhao.com/posts/threadlocal%E5%8F%8A%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%AD%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 26 May 2020 23:07:30 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/threadlocal%E5%8F%8A%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%AD%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;p&gt;本文主要讨论ThreadLocal，InheritableThreadLocal以及Transmittablethreadlocal的使用和这三者之间的一些异同。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>java线上问题排查</title>
+      <link>https://blog.wuweizhao.com/posts/java%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</link>
+      <pubDate>Tue, 26 May 2020 21:46:52 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/java%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</guid>
+      <description>&lt;h1 id=&#34;java线上问题排查&#34;&gt;java线上问题排查&lt;/h1&gt;
+&lt;p&gt;系统线上运行时，跑着跑着总是可能会发生一些意料之外的事情，这里我们大致可以分为两类为问题，一类是CPU的问题，一类是内存的问题；而其中内存又可以分为内存泄漏与频繁GC，以下就从这几个方面展开探讨。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>mysql之索引的具体实现todo</title>
+      <link>https://blog.wuweizhao.com/posts/mysql%E4%B9%8B%E7%B4%A2%E5%BC%95%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 18 May 2020 23:37:28 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mysql%E4%B9%8B%E7%B4%A2%E5%BC%95%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>mysql之索引</title>
+      <link>https://blog.wuweizhao.com/posts/mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Wed, 13 May 2020 23:05:32 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mysql%E4%B9%8B%E7%B4%A2%E5%BC%95/</guid>
+      <description>&lt;h2 id=&#34;mysql之索引&#34;&gt;mysql之索引&lt;/h2&gt;
+&lt;p&gt;全文keyword：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;索引 
+聚簇索引 非聚簇索引 覆盖索引 回表
+B+树  哈希索引 最左匹配 联合索引 innodb myisam
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;什么是索引&#34;&gt;什么是索引&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;数据库索引&lt;/strong&gt;，是&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F&#34;&gt;数据库管理系统&lt;/a&gt;中一个排序的&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;数据结构&lt;/a&gt;，以协助快速查询、更新&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8&#34;&gt;数据库表&lt;/a&gt;中数据。  &amp;mdash;from维基百科&lt;/p&gt;
+&lt;p&gt;索引用来快速定位数据，避免每次访问时对数据库的每一行进行检索操作&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;提炼一下，索引就是一种数据结构，通过这种数据结构来实现对数据库表中数据的高效操作，其实也是一种典型的空间换时间的思想的提现。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>hexo-blog配置cdn</title>
+      <link>https://blog.wuweizhao.com/posts/hexo-blog%E9%85%8D%E7%BD%AEcdn/</link>
+      <pubDate>Wed, 13 May 2020 00:00:49 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/hexo-blog%E9%85%8D%E7%BD%AEcdn/</guid>
+      <description>&lt;h1 id=&#34;hexo-blog配置cdn&#34;&gt;hexo-blog配置cdn&lt;/h1&gt;
+&lt;h3 id=&#34;前置条件&#34;&gt;前置条件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;hexo，next主题&lt;/li&gt;
+&lt;li&gt;通过GitHub page进行部署&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;问题&#34;&gt;问题&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;访问速度慢&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>免费ngrok使用</title>
+      <link>https://blog.wuweizhao.com/posts/%E5%85%8D%E8%B4%B9ngrok%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 12 May 2020 21:54:02 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E5%85%8D%E8%B4%B9ngrok%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;h1 id=&#34;免费ngrok使用&#34;&gt;免费ngrok使用&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;云服务器这种东西，总是拥有的时候总感觉没有什么用，等到到期了之后想着跑点什么，才追悔莫及。四月份的时候阿里云到期了，想说再续费，但是转念又想又好像没有那么大的需求，刚好目光看到了陈旧的笔记本，这不就能够利用起来了吗。&lt;/li&gt;
+&lt;li&gt;于是安装了centos，一顿操作，终于又有了一台7*24的服务器了&lt;/li&gt;
+&lt;li&gt;只是，没有公网ip要怎么办呢，一般了解之下，发现了ngrok这么个东西，其实就是一个内网穿透的工具而已&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>黑苹果及mbp外接显示器开启HiDPi</title>
+      <link>https://blog.wuweizhao.com/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8F%8Ambp%E5%A4%96%E6%8E%A5%E6%98%BE%E7%A4%BA%E5%99%A8%E5%BC%80%E5%90%AFhidpi/</link>
+      <pubDate>Mon, 11 May 2020 22:59:50 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8F%8Ambp%E5%A4%96%E6%8E%A5%E6%98%BE%E7%A4%BA%E5%99%A8%E5%BC%80%E5%90%AFhidpi/</guid>
+      <description>&lt;h1 id=&#34;黑苹果及mbp外接显示器开启hidpi&#34;&gt;黑苹果及mbp外接显示器开启HiDPi&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;设备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;黑苹果，系统版本 10.15&lt;/li&gt;
+&lt;li&gt;MacBook Pro， 系统版本 10.15&lt;/li&gt;
+&lt;li&gt;外接显示器，AOC 24寸 1920*1080&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;疑问&#34;&gt;疑问&lt;/h2&gt;
+&lt;p&gt;在这几个月的使用下来，有几个疑问&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;比起win10，在黑苹果下/mbp外接显示器下字体发虚，模糊&lt;/li&gt;
+&lt;li&gt;mbp外接显示器时感觉性能更好&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>使用nacos配置中心</title>
+      <link>https://blog.wuweizhao.com/posts/%E4%BD%BF%E7%94%A8nacos%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</link>
+      <pubDate>Wed, 29 Apr 2020 21:50:16 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E4%BD%BF%E7%94%A8nacos%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</guid>
+      <description>&lt;h1 id=&#34;使用nacos配置中心&#34;&gt;使用nacos配置中心&lt;/h1&gt;
+&lt;p&gt;前言：此部分的内容基于   &lt;a href=&#34;https://image-shanghai-1258937892.cos.ap-shanghai.myqcloud.com/2020/04/28/feiginClient%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%88%87%E6%8D%A2eureka%E4%B8%BAnacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/&#34;&gt;feignClient使用及切换eureka为nacos注册中心&lt;/a&gt;，代码地址见  &lt;a href=&#34;https://github.com/weizhaowu-se/spring-eureka&#34;&gt;https://github.com/weizhaowu-se/spring-eureka&lt;/a&gt; 分支： master-nacos&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>elk部署-helloWorld</title>
+      <link>https://blog.wuweizhao.com/posts/elk%E9%83%A8%E7%BD%B2-helloworld/</link>
+      <pubDate>Wed, 29 Apr 2020 21:13:04 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/elk%E9%83%A8%E7%BD%B2-helloworld/</guid>
+      <description>&lt;h1 id=&#34;elk部署-helloworld&#34;&gt;elk部署-helloWorld&lt;/h1&gt;
+&lt;h2 id=&#34;elasticsearch&#34;&gt;elasticsearch&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;下载地址 &lt;a href=&#34;https://www.elastic.co/cn/start&#34;&gt;https://www.elastic.co/cn/start&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;解压文件 elasticsearch-6.2.2&lt;/li&gt;
+&lt;li&gt;启动，进入bin文件夹，执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./elasticsearch
+./elasticsearch -d   #后台模式运行
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>feignClient使用及切换eureka为nacos注册中心</title>
+      <link>https://blog.wuweizhao.com/posts/feiginclient%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%88%87%E6%8D%A2eureka%E4%B8%BAnacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/</link>
+      <pubDate>Tue, 28 Apr 2020 22:42:37 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/feiginclient%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%88%87%E6%8D%A2eureka%E4%B8%BAnacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/</guid>
+      <description>&lt;p&gt;此文接着上篇内容 &lt;a href=&#34;https://image-shanghai-1258937892.cos.ap-shanghai.myqcloud.com/2020/04/09/spring-eureka-hello-world/&#34;&gt;spring-eureka-hello-world&lt;/a&gt;，代码仓库地址： &lt;a href=&#34;https://github.com/weizhaowu-se/spring-eureka&#34;&gt;https://github.com/weizhaowu-se/spring-eureka&lt;/a&gt; 分支： master-nacos&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>docker私有仓库及k8s部署本地镜像</title>
+      <link>https://blog.wuweizhao.com/posts/docker%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E5%8F%8Ak8s%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F/</link>
+      <pubDate>Sun, 19 Apr 2020 16:26:10 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/docker%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E5%8F%8Ak8s%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F/</guid>
+      <description>&lt;h1 id=&#34;docker私有仓库及k8s部署本地镜像&#34;&gt;docker私有仓库及k8s部署本地镜像&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;执行命令启动私有仓库&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run -p 5000:5000 registry:2.0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行命令后，会从DockerHub上拉取registry镜像并在本地启动Registry服务，并监听5000端口。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>sprintboot&amp;docker&amp;HelloWorld</title>
+      <link>https://blog.wuweizhao.com/posts/sprintboot-docker-helloworld/</link>
+      <pubDate>Sun, 19 Apr 2020 16:05:14 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/sprintboot-docker-helloworld/</guid>
+      <description>&lt;h1 id=&#34;sprintbootdockerhelloworld&#34;&gt;sprintboot&amp;amp;docker&amp;amp;HelloWorld&lt;/h1&gt;
+&lt;h2 id=&#34;初始化springboot项目&#34;&gt;初始化springboot项目&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化springboot项目&lt;/li&gt;
+&lt;li&gt;新建HelloController&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;@RestController
+public class HelloController {
+	@RequestMapping(value = &amp;#34;/&amp;#34;, method = RequestMethod.GET)
+	public String hello() {
+		return &amp;#34;hello docker demo&amp;#34;;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>mac下安装k8s&amp;docker及HelloWorld</title>
+      <link>https://blog.wuweizhao.com/posts/mac%E4%B8%8B%E5%AE%89%E8%A3%85k8s-docker%E5%8F%8Ahelloworld/</link>
+      <pubDate>Sat, 18 Apr 2020 17:05:04 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mac%E4%B8%8B%E5%AE%89%E8%A3%85k8s-docker%E5%8F%8Ahelloworld/</guid>
+      <description>&lt;h1 id=&#34;mac下安装k8sdocker及helloworld&#34;&gt;mac下安装k8s&amp;amp;docker及HelloWorld&lt;/h1&gt;
+&lt;p&gt;安装环境：macOS&lt;/p&gt;
+&lt;h2 id=&#34;安装docker&#34;&gt;安装docker&lt;/h2&gt;
+&lt;p&gt;下载地址：https://hub.docker.com/editions/community/docker-ce-desktop-mac&lt;/p&gt;
+&lt;p&gt;无脑点击下一步即可&lt;/p&gt;
+&lt;h2 id=&#34;启用k8s&#34;&gt;启用k8s&lt;/h2&gt;
+&lt;p&gt;打开docker&amp;mdash;preference&amp;mdash;kurbernets，勾上Enable Kurbernets，注意，勾选上之后需要下载文件，这个过程比较耗时，需要耐心等待&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>spring-eureka-hello-world</title>
+      <link>https://blog.wuweizhao.com/posts/spring-eureka-hello-world/</link>
+      <pubDate>Thu, 09 Apr 2020 22:22:16 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/spring-eureka-hello-world/</guid>
+      <description>&lt;h1 id=&#34;spring-eureka-hello-world&#34;&gt;spring-eureka-hello-world&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;核心概念&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;spring-eureka：注册中心，实现服务注册和发现
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Hello world代码地址 [&lt;a href=&#34;https://github.com/weizhaowu-se/spring-eureka&#34;&gt;spring-eureka&lt;/a&gt;](&lt;a href=&#34;https://github.com/weizhaowu-se/spring-eureka&#34;&gt;https://github.com/weizhaowu-se/spring-eureka&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;注册中心server&#34;&gt;注册中心server&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化springboot（此处略去）&lt;/li&gt;
+&lt;li&gt;配置相关依赖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka-server&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;1.4.7.RELEASE&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>SpringCloud配置中心</title>
+      <link>https://blog.wuweizhao.com/posts/springcloud%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</link>
+      <pubDate>Mon, 06 Apr 2020 15:39:44 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/springcloud%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</guid>
+      <description>&lt;h1 id=&#34;springcloud配置中心&#34;&gt;SpringCloud配置中心&lt;/h1&gt;
+&lt;h2 id=&#34;服务端&#34;&gt;服务端&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/weizhaowu-se/spring-config-server&#34;&gt;spring-config-server完整代码地址&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化springboot项目&lt;/li&gt;
+&lt;li&gt;新增配置中心依赖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-cloud-config-server&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;本地配置的方式&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改&lt;code&gt;application.properties&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;spring.application.name=service-config
+spring.profiles.active=native
+#指定配置文件位置为classpath目录下的config目录
+spring.cloud.config.server.native.searchLocations=classpath:/config
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>台式机安装黑苹果</title>
+      <link>https://blog.wuweizhao.com/posts/%E5%8F%B0%E5%BC%8F%E6%9C%BA%E5%AE%89%E8%A3%85%E9%BB%91%E8%8B%B9%E6%9E%9C/</link>
+      <pubDate>Sun, 22 Mar 2020 20:02:19 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E5%8F%B0%E5%BC%8F%E6%9C%BA%E5%AE%89%E8%A3%85%E9%BB%91%E8%8B%B9%E6%9E%9C/</guid>
+      <description>&lt;p&gt;台式机配置如下&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;模块&lt;/th&gt;
+&lt;th&gt;型号&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CPU&lt;/td&gt;
+&lt;td&gt;i5-9400f&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;主板&lt;/td&gt;
+&lt;td&gt;微星（MSI）B360M MORTAR迫击炮&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;显卡&lt;/td&gt;
+&lt;td&gt;铭瑄RX580 2048SP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    <item>
+      <title>springboot集成mybatis及pageHelper的使用</title>
+      <link>https://blog.wuweizhao.com/posts/springboot%E9%9B%86%E6%88%90mybatis%E5%8F%8Apagehelper%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 02 Mar 2020 22:23:02 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/springboot%E9%9B%86%E6%88%90mybatis%E5%8F%8Apagehelper%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;h1 id=&#34;springboot集成mybatis及pagehelper的使用&#34;&gt;springboot集成mybatis及pageHelper的使用&lt;/h1&gt;
+&lt;h2 id=&#34;简单集成&#34;&gt;简单集成&lt;/h2&gt;
+&lt;h3 id=&#34;新增maven依赖&#34;&gt;新增maven依赖&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.1.1&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>springboot集成quartz</title>
+      <link>https://blog.wuweizhao.com/posts/springboot%E9%9B%86%E6%88%90quartz/</link>
+      <pubDate>Sun, 01 Mar 2020 20:24:47 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/springboot%E9%9B%86%E6%88%90quartz/</guid>
+      <description>springboot集成quartz </description>
+    </item>
+    <item>
+      <title>jwt基本概念及其在springboot的使用</title>
+      <link>https://blog.wuweizhao.com/posts/jwt%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%9C%A8springboot%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 01 Mar 2020 10:45:45 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/jwt%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%9C%A8springboot%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;h1 id=&#34;jwt基本概念及其在springboot的使用&#34;&gt;jwt基本概念及其在springboot的使用&lt;/h1&gt;
+&lt;h2 id=&#34;jwt概念&#34;&gt;jwt概念&lt;/h2&gt;
+&lt;p&gt;全称：json web token&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html&#34;&gt;JSON Web Token 入门教程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我的理解&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;与传统的session认证方式最显著的区别在于，jwt将用户信息存放在客户端，每次请求服务时再将此部分信息传给服务器（一般是通过header参数传递的方式）&lt;/li&gt;
+&lt;li&gt;jwt主要分为三个部分：
+&lt;ul&gt;
+&lt;li&gt;header：标识签名的算法等属性&lt;/li&gt;
+&lt;li&gt;payload：标识该jwt token的有效时间，签发人等信息，辨识调用方&lt;/li&gt;
+&lt;li&gt;signature：对前两者的签名，避免被篡改&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>mybatis-threshold参数问题</title>
+      <link>https://blog.wuweizhao.com/posts/mybatis-threshold%E5%8F%82%E6%95%B0%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 13 Feb 2020 15:09:00 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mybatis-threshold%E5%8F%82%E6%95%B0%E9%97%AE%E9%A2%98/</guid>
+      <description>mybatis-threshold参数问题 问题 在mapper里面使用的函数方式使用如下参数
+@Param(&amp;#34;threshold&amp;#34;) String threshold mapper.xml里面如下(threshold为该表的一个字段)
+&amp;lt;select id=&amp;#34;queryCountByImageMd5&amp;#34; resultType=&amp;#34;java.lang.Integer&amp;#34;&amp;gt;SELECT*FROMxxxxWHERRand threshold = #{threshold}&amp;lt;/select&amp;gt; 结果报错，提示类型转换失败
+解决办法 修改参数名称 threshold &amp;mdash;&amp;gt; testthreshold
+@Param(&amp;#34;testthreshold&amp;#34;) String threshold 相应修改xml相关参数</description>
+    </item>
+    <item>
+      <title>elasticsearch集群部署</title>
+      <link>https://blog.wuweizhao.com/posts/elasticsearch%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Thu, 06 Feb 2020 10:12:29 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/elasticsearch%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MQ消息最终一致性解决方案</title>
+      <link>https://blog.wuweizhao.com/posts/mq%E6%B6%88%E6%81%AF%E6%9C%80%E7%BB%88%E4%B8%80%E8%87%B4%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Thu, 06 Feb 2020 10:12:01 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mq%E6%B6%88%E6%81%AF%E6%9C%80%E7%BB%88%E4%B8%80%E8%87%B4%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>mysql之groupby获得分组指定记录</title>
+      <link>https://blog.wuweizhao.com/posts/mysql%E4%B9%8Bgroupby%E8%8E%B7%E5%BE%97%E5%88%86%E7%BB%84%E6%8C%87%E5%AE%9A%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Thu, 06 Feb 2020 10:09:11 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mysql%E4%B9%8Bgroupby%E8%8E%B7%E5%BE%97%E5%88%86%E7%BB%84%E6%8C%87%E5%AE%9A%E8%AE%B0%E5%BD%95/</guid>
+      <description>mysql之groupby获得分组指定记录 场景及需求 有如下示例表(表名test)：
+字段编码 字段名 id id 学科 subject 成绩 score 如果只是想要获得每个学科的最高分的话，那么
+select subject, score from test group by subject 上述sql能够获得需要的结果
+但是更多时候我们想要的不仅仅是这样，我们还想要同时取得学科最高分对应的id，那么我们可以这样写
+select id, subject, score from (select * from test order by score) group by subject 原理 group by后获取的第一条记录是默认第一条，那么我们先将其排序之后再去获取的，那么就能够获得到我们想要的那一条记录了
+注意事项 如果mysql版本为5.7及以上，那么需要在排序时增加一个limit
+select id, subject, score from (select * from test order by score limit 10000) group by subject 但是如果记录大于指定的limit的话，那么就会出现问题，所以这种情况只适用于数据量能够掌控的表。
+查了一下之后发现另外一种方法
+另一种方法 mysql实现group by后取各分组的最新一条 看了之后发现，这种仅限于你想要取得的字段的限定条件是唯一的情况，并不能够满足我们此种场景下的需求（此场景下的限定条件是最大成绩的那一条，而非最大id的记录）
+所以 如果想规避limit的问题，那么就
+select subject, score from test group by subject 后再用指定的subject和score去查询出对应的记录吧</description>
+    </item>
+    <item>
+      <title>使用github page以及hexo搭建博客（自定义域名）</title>
+      <link>https://blog.wuweizhao.com/posts/%E4%BD%BF%E7%94%A8github-page%E4%BB%A5%E5%8F%8Ahexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Sun, 13 Oct 2019 16:15:20 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E4%BD%BF%E7%94%A8github-page%E4%BB%A5%E5%8F%8Ahexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</guid>
+      <description>本地安装hexo 安装hexo 查看文档 hexo安装 初始化项目 常用命令
+hexo init &amp;lt;folder&amp;gt; cd &amp;lt;folder&amp;gt; npm install hexo new post &amp;#39;博客标题&amp;#39; ---新建博文 hexo generate -d hexo server ---本地启动服务器,启动后访问http://localhost:4000/ 常用文件
+_config.yml ---配置文件 source/_posts ---博客源文件(md文件) github新建仓库-github page 新建仓库,仓库名称为 {yourusername}.github.io hexo与github page配置关联 配置hexo配置文件 _config.yml deploy: type: git repo: https://github.com/{username}/{username}.github.io.git ##填写仓库地址 branch: master 执行命令 hexo g -d 访问网址 https://{yourusername}.github.io 配置自定义域名 source目录下新增文件,文件名为 CNAME (无后缀),文本内容为自定义域名(无http和www等前缀) 配置dns中的c类解析,将自定义域名映射为 {yourusername}.github.io 1. 先添加一个CNAME，主机记录写@，后面记录值写上你的http://xxxx.github.io 2. 再添加一个CNAME，主机记录写www，后面记录值也是http://xxxx.github.io 参考 hexo安装
+GitHub Pages 使用入门</description>
+    </item>
+    <item>
+      <title>测试-1013</title>
+      <link>https://blog.wuweizhao.com/posts/%E6%B5%8B%E8%AF%95-1013/</link>
+      <pubDate>Sun, 13 Oct 2019 16:02:06 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E6%B5%8B%E8%AF%95-1013/</guid>
+      <description>test </description>
+    </item>
+    <item>
+      <title>centos系统下wordpress的安装</title>
+      <link>https://blog.wuweizhao.com/posts/centos%E7%B3%BB%E7%BB%9F%E4%B8%8Bwordpress%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Sun, 16 Jun 2019 22:45:52 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/centos%E7%B3%BB%E7%BB%9F%E4%B8%8Bwordpress%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+      <description>安装apache,php yum install -y httpd php php-mysql php-gd php-xml 启动&amp;amp;重启apache服务 service httpd start //启动 systemctl restart httpd.service //此命令亦可重启服务 service httpd restart 重启 相关目录 /etc/httpd/conf/httpd.conf 配置文件位置 /var/www/html 前端文件默认根目录 升级php 配置yum源: rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 卸载旧版本的php rpm -e `rpm -qa|grep php` 安装新版本php: yum install -y php72w php72w-mysql php72w-gd php72w-ldap php72w-odbc php72w-pear php72w-xml php72w-xmlrpc php72w-mbstring php72w-snmp 查看httpd是否加载了PHP7模块 ll /etc/httpd/modules/|grep php 查看php版本 php -v 安装mysql yum localinstall http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm yum install mysql-community-server service mysqld start //查看mysql的root账号的密码 grep &amp;#39;temporary password&amp;#39; /var/log/mysqld.</description>
+    </item>
+    <item>
+      <title>cron表达式</title>
+      <link>https://blog.wuweizhao.com/posts/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sat, 15 Jun 2019 16:40:48 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>springboot中log4j的配置</title>
+      <link>https://blog.wuweizhao.com/posts/springboot%E4%B8%ADlog4j%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 04 Apr 2019 20:43:30 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/springboot%E4%B8%ADlog4j%E7%9A%84%E9%85%8D%E7%BD%AE/</guid>
+      <description>springboot中log4j的配置 </description>
+    </item>
+    <item>
+      <title>一个简单maven项目的打包与运行</title>
+      <link>https://blog.wuweizhao.com/posts/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%89%93%E5%8C%85%E4%B8%8E%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Sun, 24 Mar 2019 19:30:39 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%89%93%E5%8C%85%E4%B8%8E%E8%BF%90%E8%A1%8C/</guid>
+      <description>一个简单maven项目的打包与运行 标题描述的不是很准确,应该说,一个包含外部依赖包的maven包的项目的打包以及运行.
+创建maven工程 目录结构如下
+添加依赖包 此处以fastjson为例,在pom.xml里添加依赖如下
+&amp;lt;dependencies&amp;gt; &amp;lt;!-- https://mvnrepository.com/artifact/com.alibaba/fastjson --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;fastjson&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.1.15&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; 编写demo public class TestPackMain { public static void main(String[] args) { Map map = new HashMap(); map.put(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;); System.out.println(JSON.toJSONString(map)); } } 打包 在pom.xml里添加如下打包配置 此处主要配置两点
+jar包默认运行的main函数 编译时的java版本 &amp;lt;build&amp;gt; &amp;lt;plugins&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;maven-assembly-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.5.5&amp;lt;/version&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;archive&amp;gt; &amp;lt;manifest&amp;gt; &amp;lt;mainClass&amp;gt;pack.TestPackMain&amp;lt;/mainClass&amp;gt; &amp;lt;/manifest&amp;gt; &amp;lt;/archive&amp;gt; &amp;lt;descriptorRefs&amp;gt; &amp;lt;descriptorRef&amp;gt;jar-with-dependencies&amp;lt;/descriptorRef&amp;gt; &amp;lt;/descriptorRefs&amp;gt; &amp;lt;/configuration&amp;gt; &amp;lt;/plugin&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;3.1&amp;lt;/version&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;source&amp;gt;1.8&amp;lt;/source&amp;gt; &amp;lt;target&amp;gt;1.8&amp;lt;/target&amp;gt; &amp;lt;/configuration&amp;gt; &amp;lt;/plugin&amp;gt; &amp;lt;/plugins&amp;gt; &amp;lt;/build&amp;gt; 执行打包命令 package assembly:single 运行jar包 java -jar maven-package-demo-1.</description>
+    </item>
+    <item>
+      <title>springboot中的拦截器与过滤器</title>
+      <link>https://blog.wuweizhao.com/posts/springboot%E4%B8%AD%E7%9A%84%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8/</link>
+      <pubDate>Wed, 20 Mar 2019 21:54:26 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/springboot%E4%B8%AD%E7%9A%84%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8/</guid>
+      <description>springboot中的拦截器与过滤器 关于过滤器和拦截器的区别,在此不展开,仅仅记录下在一个springboot项目中如何配置生效过滤器以及拦截器
+过滤器 一般来讲,我们会使用FilterRegistrationBean来注册过滤器.使用流程如下:
+定义过滤器 public class MyFilter implements Filter {@Overridepublic void init(FilterConfig filterConfig) throws ServletException {}@Overridepublic void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {System.out.println(&amp;#34;doFilter&amp;#34;);filterChain.doFilter(servletRequest, servletResponse);return;}@Overridepublic void destroy() {}} 在这个过滤器中,我们仅仅是打印日志,之后将调用链接着传递
+配置过滤器 @Configurationpublic class FilterConfig {@Beanpublic FilterRegistrationBean CASFilter(){FilterRegistrationBean registration = new FilterRegistrationBean();registration.addUrlPatterns(&amp;#34;/*&amp;#34;);Filter filter = new MyFilter();registration.setFilter(filter);return registration;}} 注意Configuration和Bean注解的使用 注意过滤器的作用范围(registration.</description>
+    </item>
+    <item>
+      <title>springboot前后端分离实践</title>
+      <link>https://blog.wuweizhao.com/posts/springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Tue, 19 Mar 2019 22:56:51 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%AE%9E%E8%B7%B5/</guid>
+      <description>springboot前后端分离实践 前言 现在很多项目都是采用springboot+react或者springboot+angularJs的模式进行开发,相对应的部署方式我认为主要有两种
+打包后将前端静态文件放在resource下的文件夹里面 利用nginx的反向代理,将前端文件与后台程序分开部署. 而这两者中,我认为后者相对来说更好一些.
+部署 **要点:**nginx反向代理
+安装nginx yum install nginx 常用命令如下 nginx nginx -s stopnginx -s reloadnginx -t 默认配置文件位置 /etc/nginx/nginx.conf 配置nginx **重要:**配置文件位置/etc/nginx/nginx.conf
+配置前端文件目录 在对应的server里配置
+root /usr/share/nginx/html 备注:默认为此,不需要设置
+配置反向代理 在对应的server里配置
+location /api/ {proxy_pass http://localhost:8083/api/;} 备注:此处的localhost:8083为springboot项目启动的机器ip和端口,也就是说前后端不需要部署在同一台机器上.
+部署springboot 将springboot程序包部署启动 后记 很多人可能会有疑问,为什么要用反向代理呢?其实原因很简单:跨域.如果仅仅是将nginx作为前端的容器,然后由前端去直接请求springboot后台接口的话,是会有跨域问题的,这些请求是会被浏览器拦截的. 运用nginx的负载均衡,更进一步的话,我们可以在反向代理的时候通过nginx的upstream功能来实现负载均衡,可以指定轮询的策略. </description>
+    </item>
+    <item>
+      <title>springboot数据库与mybatis</title>
+      <link>https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/</link>
+      <pubDate>Mon, 18 Mar 2019 21:01:35 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/</guid>
+      <description>springboot数据库与mybatis入门配置 初始化工程 参考链接:https://blog.csdn.net/typa01_kk/article/details/76696618
+数据库配置以及测试 在application.properties配置如下
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/testspring.datasource.username=rootspring.datasource.password=passwordspring.datasource.driver-class-name=com.mysql.jdbc.Driverspring.datasource.max-idle=10spring.datasource.max-wait=10000spring.datasource.min-idle=5spring.datasource.initial-size=5 通过jdbcTemplate的方式访问数据库
+@RunWith(SpringRunner.class)@SpringBootTestpublic class DemoSpringbootApplicationTests {@AutowiredJdbcTemplate jdbcTemplate;@Testpublic void contextLoads() {String sql = &amp;#34;select * from user&amp;#34;;List&amp;lt;Map&amp;lt;String, Object&amp;gt;&amp;gt; resultList = jdbcTemplate.queryForList(sql);System.out.println(&amp;#34;query result:&amp;#34; + JSON.toJSONString(resultList));for (Map&amp;lt;String, Object&amp;gt; item: resultList) {for (Map.Entry&amp;lt;String, Object&amp;gt; entry: item.entrySet()) {System.out.println(entry.getKey() + &amp;#34;:&amp;#34; + entry.getValue().toString());System.out.println(&amp;#34;\n&amp;#34;);}}}} 日志打印如下:
+query result:[{&amp;#34;id&amp;#34;:1,&amp;#34;name&amp;#34;:&amp;#34;test&amp;#34;}]id:1name:test 成功访问数据库.</description>
+    </item>
+    <item>
+      <title>关于java 中的equals的一些记录</title>
+      <link>https://blog.wuweizhao.com/posts/%E5%85%B3%E4%BA%8Ejava-%E4%B8%AD%E7%9A%84equals%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sun, 21 Oct 2018 21:39:15 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E5%85%B3%E4%BA%8Ejava-%E4%B8%AD%E7%9A%84equals%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h3 id=&#34;override-equals方法的几个原则&#34;&gt;override equals方法的几个原则&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;自反性。对于任何非null的引用值x，x.equals(x)应返回true。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对称性。对于任何非null的引用值x与y，当且仅当：y.equals(x)返回true时，x.equals(y)才返回true。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传递性。对于任何非null的引用值x、y与z，如果y.equals(x)返回true，y.equals(z)返回true，那么x.equals(z)也应返回true。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一致性。对于任何非null的引用值x与y，假设对象上equals比较中的信息没有被修改，则多次调用x.equals(y)始终返回true或者始终返回false。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>https-nginx配置</title>
+      <link>https://blog.wuweizhao.com/posts/https-nginx%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Wed, 17 Oct 2018 20:25:42 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/https-nginx%E9%85%8D%E7%BD%AE/</guid>
+      <description>转载 https://bitmingw.com/2017/02/02/letsencrypt-tutorial/</description>
+    </item>
+    <item>
+      <title>测试https图床</title>
+      <link>https://blog.wuweizhao.com/posts/%E6%B5%8B%E8%AF%95https%E5%9B%BE%E5%BA%8Aimgur/</link>
+      <pubDate>Sat, 23 Jun 2018 18:30:21 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E6%B5%8B%E8%AF%95https%E5%9B%BE%E5%BA%8Aimgur/</guid>
+      <description>https图床 在给网站添加了https之后,发现访问的时候依然处于不安全的状态,查看提示之后才知道是七牛图床的协议导致的 在页面上存在http的链接的时候,浏览器仍然会提示不安全. 为了访问页面时的小绿锁,势必得寻找一个https的图床了. 七牛云是有提供https支持的,只是需要在七牛云添加备案后的域名,由于网站并不打算备案,所以这条路就行不通了 国内的其他一些有提供https图床的服务又有点不靠谱,说不定哪天就跑路了呢 微博的图床服务似乎也不是很稳定 imgur,这个又有被墙的风险 腾讯云对象存储,这个似乎比较靠谱一些,只是没有一些比较趁手的工具 估计还是得用imgur吧,或者用腾讯云,再或者就是尽量采用代码以及描述性的文字来写博客吧(┓( ´∀` )┏) imgur图片测试 ![[history/attachments/3d6a011ef197cb8f1e1bb0070c9d44c2_MD5.png]] 腾讯云对象存储 ![[history/attachments/52c43241c8ae5fc018f1485b34311d7b_MD5.jpg]]</description>
+    </item>
+    <item>
+      <title>session与cookie</title>
+      <link>https://blog.wuweizhao.com/posts/session%E4%B8%8Ecookie/</link>
+      <pubDate>Wed, 07 Feb 2018 13:42:52 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/session%E4%B8%8Ecookie/</guid>
+      <description>&lt;h1 id=&#34;session与cookie&#34;&gt;session与cookie&lt;/h1&gt;
+&lt;h2 id=&#34;cookie&#34;&gt;cookie&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;在服务端中设置,在前端中需要看情况
+&lt;ul&gt;
+&lt;li&gt;当设置了httponly时,仅能在服务端设置,js端既不能读取也不能够设置.&lt;/li&gt;
+&lt;li&gt;无设置httponly时,前端也可以设置和读取cookie的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>python-scrapy</title>
+      <link>https://blog.wuweizhao.com/posts/python-scrapy/</link>
+      <pubDate>Sun, 28 Jan 2018 22:52:21 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/python-scrapy/</guid>
+      <description>&lt;h1 id=&#34;scrapy爬虫框架&#34;&gt;scrapy爬虫框架&lt;/h1&gt;
+&lt;h2 id=&#34;入门&#34;&gt;入门&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开始项目以及创建爬虫(参照命令行工具)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  scrapy startproject myproject  //初始化项目
+  cd myproject
+  scrapy genspider mydomain mydomain.com  //创建spider
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>python-tips</title>
+      <link>https://blog.wuweizhao.com/posts/python-tips/</link>
+      <pubDate>Sun, 28 Jan 2018 22:11:30 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/python-tips/</guid>
+      <description>&lt;h1 id=&#34;python-tips&#34;&gt;python-tips&lt;/h1&gt;
+&lt;h2 id=&#34;列表生成式&#34;&gt;列表生成式&lt;/h2&gt;</description>
+    </item>
+    <item>
+      <title>servletRequest中读取body的问题</title>
+      <link>https://blog.wuweizhao.com/posts/servletrequest%E4%B8%AD%E8%AF%BB%E5%8F%96body%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 26 Jan 2018 16:55:07 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/servletrequest%E4%B8%AD%E8%AF%BB%E5%8F%96body%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;h1 id=&#34;servletrequest中读取body的数据&#34;&gt;ServletRequest中读取body的数据&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt; InputStream body = request.getInputStream();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据流仅仅能够读取一次,如果你想要多次读取(在多个调用链中)(比如说在多个过滤器中),例如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  chain.doFilter(request, response);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样后面的调用中request将读取不到body的数据.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSRF浅析</title>
+      <link>https://blog.wuweizhao.com/posts/csrf%E6%B5%85%E6%9E%90/</link>
+      <pubDate>Wed, 24 Jan 2018 11:01:37 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/csrf%E6%B5%85%E6%9E%90/</guid>
+      <description>CSRF浅析 什么是CSRF Cross-site request forgery,跨站请求伪造.
+简单的攻击样例 小明访问并且登录了网站A
+小明访问坏人的网站B,网站B上存在一些网站A的请求(GET或者POST)
+一个简单的get请求可以利用img的src属性:&amp;lt;img src=&amp;quot;http://example.com/get?xxx=xxx&amp;quot;&amp;gt;访问时触发了请求,此时由于请求中携带着相关的cookie信息,所以网站A是会通过这些非法的请求的,也就是跨站(在黑客网站B)请求伪造.
+预防 referer验证 这是一种不安全的校验方法
+校验原理 对于网络请求,在header里面存在着referer属性,这个属性标识出请求的来源网站,所以我们可以通过验证referer来预防csrf攻击
+存在问题 对于某些浏览器来说,这个属性可能为空 referer可以轻易地伪造 从搜索引擎跳转时,referer是搜索引擎,所以可能需要维护一个白名单 双提交cookie 较为安全
+实现 对于每一个网络请求,在提交请求时,在js中将cookie中的某些值(可以是单独生成的token或者用户标志灯)添加到header上提交,在后台去校验是否存在token以及是否与cookie的值相匹配
+原理 当你在访问坏人的网站B时,同时提交的仅仅只有cookie,而你在正常访问时,提交时会在header中添加csrftoken.
+问题 其实也不能算是问题吧,如果你的网络请求是统一到一个方法里面执行的,例如说ajax或者dwr,那么就可以很方便地修改,但是如果不是的话,那么修改的工作量可能就有点大了.
+参考 https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0 https://zh.wikipedia.org/wiki/HTTP%E5%8F%83%E7%85%A7%E4%BD%8D%E5%9D%80 https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html</description>
+    </item>
+    <item>
+      <title>web线程安全</title>
+      <link>https://blog.wuweizhao.com/posts/web%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</link>
+      <pubDate>Wed, 24 Jan 2018 10:34:17 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/web%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</guid>
+      <description>java web中的线程安全问题 问题描述: 伪代码: 判断redis是否有相应的键值对: 有: 读取redis 没有: 读取数据库 插入redis(列表的插入) 返回 问题 当请求并发时,第一个请求redis未插入而第二个请求也进入了判断,此时第二个请求的判断条件也是&amp;quot;否&amp;quot;,所以就会出现redis数据重复的情况.
+原因 虽然说对于每一个单独的请求,spring都是新建一个单独的线程来进行处理,但是这并不能够解决上面的问题,究其原因,则是访问了同一个全局数据(可以认为是redis)
+解决: 增加一个全局变量,使用synchronize同步方法,伪代码如下
+伪代码 全局变量 lock 判断redis是否有相应的键值对: 有: 读取redis 没有: synchronize(lock) 再次判断redis是否有相应的键值对 有: 读取redis 没有: 读取数据库 插入redis 再次判断的原因:加锁只是阻塞了第二个请求的读取数据库/插入redis操作,如果没有再次判断的话,那么当第一个请求释放锁之后第二个请求依旧会再次读取数据库/插入redis,问题依旧存在 参考 http://www.cnblogs.com/doit8791/p/4093808.html</description>
+    </item>
+    <item>
+      <title>跨域请求</title>
+      <link>https://blog.wuweizhao.com/posts/%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Tue, 14 Nov 2017 20:35:48 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/</guid>
+      <description>&lt;h1 id=&#34;跨域资源请求cors&#34;&gt;跨域资源请求CORS&lt;/h1&gt;
+&lt;h2 id=&#34;1什么是跨域资源请求&#34;&gt;1.什么是跨域资源请求&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;通常情况下,我们访问一个网站的过程如下:
+&lt;ul&gt;
+&lt;li&gt;访问页面example.com,加载页面html以及js&lt;/li&gt;
+&lt;li&gt;对页面进行一些操作,由js通过ajax访问后台,进行页面的更新.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;一般情况下,通过ajax调用后台是同源的,同源指的是:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;协议相同&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;端口号相同&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;地址相同&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;但是有时候通过js请求非同源的后台服务,这个时候就是属于跨域资源请求了&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>深入剖析tomcat笔记</title>
+      <link>https://blog.wuweizhao.com/posts/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90tomcat%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 30 Oct 2017 20:33:52 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90tomcat%E7%AC%94%E8%AE%B0/</guid>
+      <description> servlet reponse request 启动连接器-&amp;gt;等待连接-&amp;gt;调用container容器-&amp;gt;解析header,调用servlet </description>
+    </item>
+    <item>
+      <title>Maven实战读书笔记</title>
+      <link>https://blog.wuweizhao.com/posts/maven%E5%AE%9E%E6%88%98%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 11 Oct 2017 20:59:19 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/maven%E5%AE%9E%E6%88%98%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h1 id=&#34;maven实战&#34;&gt;Maven实战&lt;/h1&gt;
+&lt;h2 id=&#34;常用命令&#34;&gt;常用命令&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;mvn clean compile&lt;/li&gt;
+&lt;li&gt;mvn clean test&lt;/li&gt;
+&lt;li&gt;mvn clean package
+&lt;ul&gt;
+&lt;li&gt;默认打包为jar,可以在pom.xml里面指定打包类型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;mvn clean install
+&lt;ul&gt;
+&lt;li&gt;将项目打包后安装到本地仓库以供其他项目使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;默认打包生成的jar时不能够直接运行的,为了生成可执行的jar文件,需要借助maven-shade-plugin&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>JavaScript中的面向对象程序设计</title>
+      <link>https://blog.wuweizhao.com/posts/javascript%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Mon, 28 Aug 2017 22:39:49 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/javascript%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;h1 id=&#34;javascript中的面向对象程序设计&#34;&gt;JavaScript中的面向对象程序设计&lt;/h1&gt;
+&lt;h2 id=&#34;1最简单的模式&#34;&gt;1.最简单的模式&lt;/h2&gt;
+&lt;h3 id=&#34;11-新建实例添加属性和方法&#34;&gt;1.1 新建实例添加属性和方法&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;	var person = new Object();
+	person.name = &amp;quot;name&amp;quot;;
+	person.sayHi = function() {
+	    console.log(&amp;quot;hi&amp;quot;);
+	}
+	
+	console.log(person.name);
+	person.sayHi();
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>mybatis入门以及整合spring</title>
+      <link>https://blog.wuweizhao.com/posts/mybatis%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88spring/</link>
+      <pubDate>Wed, 23 Aug 2017 20:39:27 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mybatis%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88spring/</guid>
+      <description>&lt;h1 id=&#34;mybatis入门&#34;&gt;mybatis入门&lt;/h1&gt;
+&lt;h2 id=&#34;什么是mybatis&#34;&gt;什么是mybatis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MyBatis是一个Java持久化框架，它通过XML描述符或注解把对象与存储过程或SQL语句关联起来(from维基百科)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;mybatis的jar包&lt;/li&gt;
+&lt;li&gt;一个数据库(我采用的是mysql)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;具体如下&#34;&gt;具体如下&lt;/h2&gt;
+&lt;h3 id=&#34;数据库结构如下&#34;&gt;数据库结构如下&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://7xkzud.com1.z0.glb.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20170823210127.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JAVA NIO</title>
+      <link>https://blog.wuweizhao.com/posts/java-nio/</link>
+      <pubDate>Wed, 23 Aug 2017 20:31:21 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/java-nio/</guid>
+      <description>参考资料:https://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html 主要概念: 通道(channel) 缓冲区(buffer) 主要思想: 在原来的IO的思想上封装,提高IO效率 方法: 通过缓冲区实现基于块的读写 具体: 先获得文件的输入输出流&amp;ndash;&amp;gt;从文件的输入输出流获得通道(channel) &amp;ndash;&amp;gt;分配缓冲区(buffer)&amp;ndash;&amp;gt;从缓冲区中读取内容/将内容写入缓冲
+缓冲区内部细节: 缓冲区的底层实现可以看成是一个字节数组,
+三个变量 position:当前索引,也可以理解为指针所指的元素,初始值为0,指向第一个元素 limit:初始值为capacity,通过与position以clear函数和flip函数结合来确定写入写出的元素. capacity:总容量,可以理解为数组长度,limit&amp;lt;=capacity flip函数 1.将limit设置为position的值 2.将position设置为0 将buffer写入到输出通道时,调用此函数,注意在写入到输出通道时(foutchanel.write(buffer)), position会步进,而limit不变,所以想要循环读取时,需要调用clear函数重置缓冲区的状态.
+clear函数 1.将limit设置为capacity的值 2.将position设置为0
+文件输入输出流会记住输入输出的位置,每个字节仅能被读取一次.</description>
+    </item>
+    <item>
+      <title>SQL记录(二)</title>
+      <link>https://blog.wuweizhao.com/posts/sql%E8%AE%B0%E5%BD%95-%E4%BA%8C/</link>
+      <pubDate>Mon, 31 Jul 2017 21:27:57 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/sql%E8%AE%B0%E5%BD%95-%E4%BA%8C/</guid>
+      <description>&lt;h1 id=&#34;聚集函数&#34;&gt;聚集函数&lt;/h1&gt;
+&lt;h3 id=&#34;min&#34;&gt;MIN()&lt;/h3&gt;
+&lt;h3 id=&#34;max&#34;&gt;MAX()&lt;/h3&gt;
+&lt;h3 id=&#34;avg&#34;&gt;AVG()&lt;/h3&gt;
+&lt;h3 id=&#34;sum&#34;&gt;SUM()&lt;/h3&gt;</description>
+    </item>
+    <item>
+      <title>javascript高级程序设计笔记</title>
+      <link>https://blog.wuweizhao.com/posts/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 18 Jul 2017 21:12:05 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;使用var定义的变量为局部变量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;省略var定义的变量为全局变量&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>SQL记录(一)</title>
+      <link>https://blog.wuweizhao.com/posts/sql%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 17 Jul 2017 20:28:17 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/sql%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;distinct关键字&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过distinct让数据库只返回不同的数值,注意,当查询多列数字时,只有当所有列内容相同才会视其为相同的数值.&lt;/li&gt;
+&lt;li&gt;使用时,将distinct关键字置于列名之前.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>hexo第三方服务添加</title>
+      <link>https://blog.wuweizhao.com/posts/hexo%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E6%B7%BB%E5%8A%A0/</link>
+      <pubDate>Sun, 16 Jul 2017 21:42:11 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/hexo%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E6%B7%BB%E5%8A%A0/</guid>
+      <description>&lt;p&gt;通常来讲为next主题添加第三方服务(例如添加评论系统,使用百度统计,腾讯分析等)的过程都是类似的:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;注册网站,获得相应的appID或者key&lt;/li&gt;
+&lt;li&gt;在主题的配置文件中设置相应的appID或者key&lt;/li&gt;
+&lt;li&gt;重新生成并部署hexo即可&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>ubuntu下编译安装nginx</title>
+      <link>https://blog.wuweizhao.com/posts/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85nginx/</link>
+      <pubDate>Thu, 13 Apr 2017 14:14:12 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85nginx/</guid>
+      <description>Ubuntu下编译安装nginx 参考这里
+安装完成之后，编辑修改nginx.conf， 路径是 /usr/local/nginx/conf/nginx.conf
+启动nginx sudo /usr/local/nginx/sbin/nginx
+关闭nginx sudo /usr/local/nginx/sbin/nginx -s stop
+重读nginx配置文件 sudo /usr/local/nginx/sbin/nginx -s reload</description>
+    </item>
+    <item>
+      <title>vps&#43;git&#43;hexo&#43;nginx搭建博客网站</title>
+      <link>https://blog.wuweizhao.com/posts/vps-git-hexo-nginx%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Thu, 13 Apr 2017 12:52:29 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/vps-git-hexo-nginx%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid>
+      <description>&lt;h1 id=&#34;vpsgithexonginx搭建博客网站&#34;&gt;vps+git+hexo+nginx搭建博客网站&lt;/h1&gt;
+&lt;p&gt;由于科学上网的需要，买了一个vps，想着单单用来ss似乎不太值，所以就想说搭建一个简单的博客系统，wordpress比较繁杂，所以就采用了这样的一个方式来搭建博客：git+hexo（主题：next）+nginx，实现思路大概是这样子的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在本地windows上搭建hexo，编写博客之后hexo generate，生成html文件&lt;/li&gt;
+&lt;li&gt;在vps上搭建git服务器，nginx服务&lt;/li&gt;
+&lt;li&gt;将本地html文件更新到服务器上&lt;/li&gt;
+&lt;li&gt;使用git hook功能将服务器git目录更新到网页文件上&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>by以及having的使用</title>
+      <link>https://blog.wuweizhao.com/posts/sql%E4%B8%ADgroup-by%E4%BB%A5%E5%8F%8Ahaving%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 28 Oct 2016 15:25:31 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/sql%E4%B8%ADgroup-by%E4%BB%A5%E5%8F%8Ahaving%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;h2 id=&#34;group-by-与-having&#34;&gt;group by 与 having&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;分组:将表格中的数据按照某一列进行分组,通常会搭配聚合函数使用,常见的聚合函数有如下几种
+&lt;ul&gt;
+&lt;li&gt;sum&lt;/li&gt;
+&lt;li&gt;avg&lt;/li&gt;
+&lt;li&gt;count&lt;/li&gt;
+&lt;li&gt;min max&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Java中的synchronized和volatile</title>
+      <link>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84synchronized%E5%92%8Cvolatile_todo/</link>
+      <pubDate>Wed, 26 Oct 2016 14:08:22 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84synchronized%E5%92%8Cvolatile_todo/</guid>
+      <description>&lt;h2 id=&#34;volatile关键字&#34;&gt;volatile关键字&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;程序在运行时,为了提高性能可能会将主存中的变量拷贝到CPU缓存当中,
+&lt;ul&gt;
+&lt;li&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://7xkzud.com1.z0.glb.clouddn.com/16-10-26/52900619.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Java中的单例模式</title>
+      <link>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 26 Oct 2016 13:35:40 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;h1 id=&#34;java中的单例模式&#34;&gt;Java中的单例模式&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;多线程中可能会导致对象的多次初始化.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;懒汉式的实现&#34;&gt;懒汉式的实现&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;之所以成为懒汉,个人认为应该是类的初始化只在需要的时候进行,所以很&amp;quot;懒&amp;quot;.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Java正则表达式SomeTips</title>
+      <link>https://blog.wuweizhao.com/posts/java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sun, 16 Oct 2016 20:29:12 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;默认的写法均为贪婪的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;加?之后修改为最短匹配&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  Pattern pattern = Pattern.compile(&amp;quot;\\d{1,3}&amp;quot;);
+  String s = &amp;quot;123-456-789&amp;quot;;
+  Matcher matcher = pattern.matcher(s);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>JAVA中的引用</title>
+      <link>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8/</link>
+      <pubDate>Fri, 07 Oct 2016 20:09:10 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8/</guid>
+      <description> String str=new String(&amp;quot;abc&amp;quot;); // 强引用 SoftReference&amp;lt;String&amp;gt; softRef=new SoftReference&amp;lt;String&amp;gt;(str); 弱引用WeakReference 比软引用更加弱，当垃圾收集器回收时就会被回收。 虚引用 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://blog.wuweizhao.com/posts/handler_async_task/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/handler_async_task/</guid>
+      <description>title: 异步消息处理 date: 2016-09-26 tags:
+android 第一行代码 Handler handler = new Handler() {@Overridepublic void handleMessage(Message msg) {super.handleMessage(msg);textView.setText(&amp;quot;after handling&amp;quot; + msg.getData().getString(&amp;quot;key&amp;quot;));}};* tips:Message可能需要用到的两个成员分别是* msg.what* msg.setData(),msg.getData()在新开的线程中使用handler的sendMessage方法发送消息，以达到修改UI元素的效果。
+new Thread(new Runnable() {@Overridepublic void run() {Message msg = new Message();Bundle bundle = new Bundle();bundle.putString(&amp;quot;key&amp;quot;, textView.getText().toString());msg.setData(bundle);handler.sendMessage(msg);}}).start();一些思考
+MessageQueue：消息队列Looper：循环，一直从消息队列中获得消息，如果没有消息则一直循环。成员变量有MessageQueue。ThreadLocal变量，每个线程唯一且相同。Handler：成员变量有Looper，亦即也拥有MessageQueue，发送消息时向消息队列插入消息，有Looper负责发现消息并且根据Message的target（亦即handler）来负责处理消息。所以，当我们在子线程中用handler发送消息时，插入的MessageQueue是主线程的MessageQueue，此时由handler的操作便变成了主线程的操作而非在子线程中操作界面。 AsyncTask 继承AsyncTask类
+//参数，运行时返回值类型，结果类型class DownloadTask extends AsyncTask&amp;lt;String, Integer, Boolean&amp;gt; {int count = 0;//任务启动前执行的函数@Overrideprotected void onPreExecute() {progressDialog.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://blog.wuweizhao.com/posts/service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/service/</guid>
+      <description>title: Service date: 2016-09-26 tags:
+android 第一行代码 public class DownloadBinder extends Binder{int count = 0;Handler handler;public void setHandler(Handler handler) {this.handler = handler;}public void startDownload() {}}继承Service，Override onBind函数,新增成员：DownloadBinder。
+public class MyService extends Service {DownloadBinder downloadBinder = new DownloadBinder();@Nullable@Overridepublic IBinder onBind(Intent intent) {return downloadBinder;}}Activity中，连接时获得DownloadBinder实例，这样就可以通过Binder来与Service进行通信。
+ServiceConnection connection = new ServiceConnection() {@Overridepublic void onServiceConnected(ComponentName name, IBinder service) {binder = (MyService.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://blog.wuweizhao.com/posts/windows-hugo&#43;githubpage&#43;obsidian/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/windows-hugo&#43;githubpage&#43;obsidian/</guid>
+      <description>hugo new site myBlog git clone git@github.com:AmazingRise/hugo-theme-diary.git hugo server -t hugo-theme-diary &amp;ndash;buildDrafts
+使用主题 https://github.com/adityatelange/hugo-PaperMod/wiki/Installation</description>
+    </item>
+  </channel>
+</rss>

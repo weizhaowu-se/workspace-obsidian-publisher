@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Servlet on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/servlet/</link>
+    <description>Recent content in Servlet on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Fri, 26 Jan 2018 16:55:07 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/servlet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>servletRequest中读取body的问题</title>
+      <link>https://blog.wuweizhao.com/posts/servletrequest%E4%B8%AD%E8%AF%BB%E5%8F%96body%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 26 Jan 2018 16:55:07 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/servletrequest%E4%B8%AD%E8%AF%BB%E5%8F%96body%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;h1 id=&#34;servletrequest中读取body的数据&#34;&gt;ServletRequest中读取body的数据&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt; InputStream body = request.getInputStream();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据流仅仅能够读取一次,如果你想要多次读取(在多个调用链中)(比如说在多个过滤器中),例如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  chain.doFilter(request, response);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样后面的调用中request将读取不到body的数据.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

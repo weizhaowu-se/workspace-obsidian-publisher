@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ubuntu on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Wed, 17 Oct 2018 20:25:42 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>https-nginx配置</title>
+      <link>https://blog.wuweizhao.com/posts/https-nginx%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Wed, 17 Oct 2018 20:25:42 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/https-nginx%E9%85%8D%E7%BD%AE/</guid>
+      <description>转载 https://bitmingw.com/2017/02/02/letsencrypt-tutorial/</description>
+    </item>
+    <item>
+      <title>ubuntu下编译安装nginx</title>
+      <link>https://blog.wuweizhao.com/posts/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85nginx/</link>
+      <pubDate>Thu, 13 Apr 2017 14:14:12 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85nginx/</guid>
+      <description>Ubuntu下编译安装nginx 参考这里
+安装完成之后，编辑修改nginx.conf， 路径是 /usr/local/nginx/conf/nginx.conf
+启动nginx sudo /usr/local/nginx/sbin/nginx
+关闭nginx sudo /usr/local/nginx/sbin/nginx -s stop
+重读nginx配置文件 sudo /usr/local/nginx/sbin/nginx -s reload</description>
+    </item>
+  </channel>
+</rss>

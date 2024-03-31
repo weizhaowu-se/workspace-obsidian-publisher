@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>elasticsearch之文本导入及拼音搜索实现 | 一亩三分地</title>
+<meta name="keywords" content="elasticsearch">
+<meta name="description" content="elasticsearch之文本导入及拼音搜索实现
+需求：非结构化数据（word，pdf等文档）导入es，实现全文检索的功能（包括拼音检索功能）
+本文会先从非结构化数据导入es，还有拼音搜索的实现，以及最后两者的联合应用。
+
+本文基于es版本6.8.0
+">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4599eadb9eb2ad3d0a8d6827b41a8fda8f2f4af226b63466c09c5fddbc8706b7.css" integrity="sha256-RZnq256yrT0KjWgntBqP2o8vSvImtjRmwJxf3byHBrc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.wuweizhao.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.wuweizhao.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.wuweizhao.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.wuweizhao.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.wuweizhao.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="elasticsearch之文本导入及拼音搜索实现" />
+<meta property="og:description" content="elasticsearch之文本导入及拼音搜索实现
+需求：非结构化数据（word，pdf等文档）导入es，实现全文检索的功能（包括拼音检索功能）
+本文会先从非结构化数据导入es，还有拼音搜索的实现，以及最后两者的联合应用。
+
+本文基于es版本6.8.0
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-08-16T11:08:16+00:00" />
+<meta property="article:modified_time" content="2020-08-16T11:08:16+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="elasticsearch之文本导入及拼音搜索实现"/>
+<meta name="twitter:description" content="elasticsearch之文本导入及拼音搜索实现
+需求：非结构化数据（word，pdf等文档）导入es，实现全文检索的功能（包括拼音检索功能）
+本文会先从非结构化数据导入es，还有拼音搜索的实现，以及最后两者的联合应用。
+
+本文基于es版本6.8.0
+"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.wuweizhao.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "elasticsearch之文本导入及拼音搜索实现",
+      "item": "https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "elasticsearch之文本导入及拼音搜索实现",
+  "name": "elasticsearch之文本导入及拼音搜索实现",
+  "description": "elasticsearch之文本导入及拼音搜索实现 需求：非结构化数据（word，pdf等文档）导入es，实现全文检索的功能（包括拼音检索功能）\n本文会先从非结构化数据导入es，还有拼音搜索的实现，以及最后两者的联合应用。\n本文基于es版本6.8.0 ",
+  "keywords": [
+    "elasticsearch"
+  ],
+  "articleBody": "elasticsearch之文本导入及拼音搜索实现 需求：非结构化数据（word，pdf等文档）导入es，实现全文检索的功能（包括拼音检索功能）\n本文会先从非结构化数据导入es，还有拼音搜索的实现，以及最后两者的联合应用。\n本文基于es版本6.8.0 非结构化数据的导入 插件：ingest-attachment 版本：6.8.0 步骤 建立文本抽取管道（执行时需将//注释内容去掉） PUT /_ingest/pipeline/attachment //atttachment为管道名称，下文导入数据时会使用\r{\r\"description\": \"Extract attachment information\",\r\"processors\": [\r{\r\"attachment\":{\r\"field\":\"data\", //管道抽取使用的原数据字段\r\"indexed_chars\" : -1,\r\"ignore_missing\":true\r}\r},\r{\r\"remove\":{\"field\":\"data\"} //抽取完成是否要删除原字段\r}\r]\r} 建索引（此处略去，不需要限定字段类型的话可以直接使用默认生成的索引结构） 将想要导入的数据转成base64 此处我使用的是mac自带的base64命令\nbase64 -i 输入文件 -o 输出文件 导入数据 PUT /pdftest/pdf/1?pipeline=attachment\r{\r\"data\":\"5oiR54ix5L2g\"\r} 查询数据 //查询命令\rGET /pdftest/pdf/1\r//查询结果\r{\r\"_index\" : \"pdftest\",\r\"_type\" : \"pdf\",\r\"_id\" : \"1\",\r\"_version\" : 4,\r\"_seq_no\" : 3,\r\"_primary_term\" : 3,\r\"found\" : true,\r\"_source\" : {\r\"attachment\" : { //attachment里面的其他字段可以通过配置管道的时候进行配置\r\"content_type\" : \"text/plain; charset=UTF-8\",\r\"language\" : \"lt\",\r\"content\" : \"我爱你\", //content内容即为文本转换的内容\r\"content_length\" : 4\r}\r}\r}\r//查询命令\rPOST /pdftest/_search\r{\r\"query\": {\r\"match_phrase\": {\r\"attachment.content\": \"我爱\"\r}\r}\r} 参考 https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/ingest-attachment.html#ingest-attachment\nhttps://blog.csdn.net/wenxindiaolong061/article/details/82562450\nhttps://blog.csdn.net/m0_37739193/article/details/86421246\nhttps://stackoverflow.com/questions/37861279/how-to-index-a-pdf-file-in-elasticsearch-5-0-0-with-ingest-attachment-plugin\nhttps://blog.csdn.net/LazyBoy_Z_z/article/details/82864264\n拼音搜索的实现 插件：https://github.com/medcl/elasticsearch-analysis-pinyin 版本：6.8.0 步骤 自定义分词器 要使用「拼音插件」需要在创建索引时使用「自定义模板」并在自定义模板中「自定义分析器」。\nPUT /doc_resources\r{\r\"settings\": {\r\"analysis\": {\r\"analyzer\": {\r\"user_name_analyzer\": {\r\"tokenizer\": \"ik_smart\",\r\"filter\": \"pinyin_first_letter_and_full_pinyin_filter\"\r}\r},\r\"filter\": {\r\"pinyin_first_letter_and_full_pinyin_filter\": { //此处的配置可以参见github上插件说明页的可选项配置\r\"type\": \"pinyin\",\r\"keep_first_letter\": true,\r\"keep_full_pinyin\": true,\r\"keep_none_chinese\": true,\r\"keep_original\": true,\r\"limit_first_letter_length\": 16,\r\"lowercase\": true,\r\"trim_whitespace\": true,\r\"keep_none_chinese_in_first_letter\": true,\r\"ignore_pinyin_offset\": true\r}\r}\r}\r}\r} 创建索引mapping POST /doc_resources/doc/_mapping\r{\r\"properties\": {\r\"doc_name\": { //字段名称\r\"type\": \"text\",\r\"analyzer\": \"ik_smart\", //指定该字段为ik_smart分词\r\"fields\": { \"pinyin\": { //子pinyin字段\r\"type\": \"text\",\r\"store\": false,\r\"term_vector\": \"with_offsets\",\r\"analyzer\": \"user_name_analyzer\", //指定为第一步的自定义拼音分词方式\r\"boost\": 10\r}\r}\r}\r} } 导入数据 PUT /doc_resources/doc/1/\r{\r\"doc_name\": \"因他“是香港最受尊重和喜爱的演艺名人之一，对香港电影及音乐贡献良多。其严谨专业的工作态度，足以成为年轻人的典范”，为了“表彰他在表演艺术方面的成就”而授予刘德华荣誉院士称号，\"\r} 在拼音字段上面做检索 POST /doc_resources/_search\r{\r\"query\": {\r\"match_phrase\": {\r\"doc_name.pinyin\": \"liudehua\"\r}\r}\r} 查看分词的结果 POST /doc_resources/_analyze\r{\r\"analyzer\": \"user_name_analyzer\",\r\"text\": [\"刘德华\"]\r} 参考 https://github.com/medcl/elasticsearch-analysis-pinyin\nhttps://symonlin.github.io/2019/01/07/elasticsearch-4/\n联合使用 接下来我们要将上面两个结合起来，使用非结构化文本导入\u0026\u0026拼音检索\n其实很简单，通过拼音的检索的配置流程我们可以看到，是将pinyin字段作为单独的一个子字段进行存放并且指定分词器为拼音分词器，那么一样的，只要预先定义好索引的结构（我们在非结构化数据导入的时候并没有定义好结构而是让es在导入数据的时候默认生成了），那么就能够实现拼音的效果了，定义的索引结构如下 PUT /doc_resources/doc/_mapping\r{\r\"doc\": {\r\"properties\": {\r\"attachment\": {\r\"properties\": {\r\"content\": {\r\"type\": \"text\",\r\"analyzer\": \"ik_smart\",\r\"fields\": {\r\"keyword\": {\r\"type\": \"keyword\",\r\"ignore_above\": 256\r},\r\"pinyin\": {\r\"type\": \"text\",\r\"store\": false,\r\"term_vector\": \"with_offsets\",\r\"analyzer\": \"user_name_analyzer\",\r\"boost\": 10\r}\r}\r},\r\"content_length\": {\r\"type\": \"long\"\r},\r\"content_type\": {\r\"type\": \"text\",\r\"fields\": {\r\"keyword\": {\r\"type\": \"keyword\",\r\"ignore_above\": 256\r}\r}\r},\r\"language\": {\r\"type\": \"text\",\r\"fields\": {\r\"keyword\": {\r\"type\": \"keyword\",\r\"ignore_above\": 256\r}\r}\r}\r}\r}\r}\r}\r} 导入非结构化数据 PUT /doc_resources/doc/2?pipeline=attachment\r{\r\"data\":\"5oiR54ix5L2g\"\r} 查询数据 POST /doc_resources/_search\r{\r\"query\": {\r\"match_phrase\": {\r\"attachment.content.pinyin\": \"woaini\"\r}\r}\r}\r//查询结果\r{\r\"took\" : 5,\r\"timed_out\" : false,\r\"_shards\" : {\r\"total\" : 5,\r\"successful\" : 5,\r\"skipped\" : 0,\r\"failed\" : 0\r},\r\"hits\" : {\r\"total\" : 1,\r\"max_score\" : 2.6894288,\r\"hits\" : [\r{\r\"_index\" : \"doc_resources\",\r\"_type\" : \"doc\",\r\"_id\" : \"2\",\r\"_score\" : 2.6894288,\r\"_source\" : {\r\"attachment\" : {\r\"content_type\" : \"text/plain; charset=UTF-8\",\r\"language\" : \"lt\",\r\"content\" : \"我爱你\",\r\"content_length\" : 4\r}\r}\r}\r]\r}\r} 总结一下步骤流程 安装es，安装es插件（文本抽取，拼音分词） 设置管道属性（attachment pipeline） 设置指定索引的拼音分词器属性 创建该索引的mapping结构 文件转成base64，导入es 在pinyin分词字段上进行查询 ",
+  "wordCount" : "424",
+  "inLanguage": "en",
+  "datePublished": "2020-08-16T11:08:16Z",
+  "dateModified": "2020-08-16T11:08:16Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "一亩三分地",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.wuweizhao.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.wuweizhao.com/" accesskey="h" title="一亩三分地 (Alt + H)">一亩三分地</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      elasticsearch之文本导入及拼音搜索实现
+    </h1>
+    <div class="post-meta"><span title='2020-08-16 11:08:16 +0000 UTC'>August 16, 2020</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="elasticsearch之文本导入及拼音搜索实现">elasticsearch之文本导入及拼音搜索实现<a hidden class="anchor" aria-hidden="true" href="#elasticsearch之文本导入及拼音搜索实现">#</a></h1>
+<p>需求：非结构化数据（word，pdf等文档）导入es，实现全文检索的功能（包括拼音检索功能）</p>
+<p>本文会先从非结构化数据导入es，还有拼音搜索的实现，以及最后两者的联合应用。</p>
+<ul>
+<li>本文基于es版本6.8.0</li>
+</ul>
+<h2 id="非结构化数据的导入">非结构化数据的导入<a hidden class="anchor" aria-hidden="true" href="#非结构化数据的导入">#</a></h2>
+<ul>
+<li>插件：ingest-attachment  版本：6.8.0</li>
+</ul>
+<h3 id="步骤">步骤<a hidden class="anchor" aria-hidden="true" href="#步骤">#</a></h3>
+<ol>
+<li>建立文本抽取管道（执行时需将//注释内容去掉）</li>
+</ol>
+<pre tabindex="0"><code>PUT /_ingest/pipeline/attachment     //atttachment为管道名称，下文导入数据时会使用
+{
+  &#34;description&#34;: &#34;Extract attachment information&#34;,
+  &#34;processors&#34;: [
+    {
+      &#34;attachment&#34;:{
+        &#34;field&#34;:&#34;data&#34;,                 //管道抽取使用的原数据字段
+        &#34;indexed_chars&#34; : -1,
+        &#34;ignore_missing&#34;:true
+      }
+    },
+    {
+     &#34;remove&#34;:{&#34;field&#34;:&#34;data&#34;}       //抽取完成是否要删除原字段
+ }
+  ]
+}
+</code></pre><ol start="2">
+<li>建索引（此处略去，不需要限定字段类型的话可以直接使用默认生成的索引结构）</li>
+<li>将想要导入的数据转成base64</li>
+</ol>
+<p>此处我使用的是mac自带的base64命令</p>
+<pre tabindex="0"><code>base64 -i 输入文件  -o 输出文件
+</code></pre><ol start="4">
+<li>导入数据</li>
+</ol>
+<pre tabindex="0"><code>PUT /pdftest/pdf/1?pipeline=attachment
+{
+     &#34;data&#34;:&#34;5oiR54ix5L2g&#34;
+}
+</code></pre><ol start="5">
+<li>查询数据</li>
+</ol>
+<pre tabindex="0"><code>//查询命令
+GET /pdftest/pdf/1
+//查询结果
+{
+  &#34;_index&#34; : &#34;pdftest&#34;,
+  &#34;_type&#34; : &#34;pdf&#34;,
+  &#34;_id&#34; : &#34;1&#34;,
+  &#34;_version&#34; : 4,
+  &#34;_seq_no&#34; : 3,
+  &#34;_primary_term&#34; : 3,
+  &#34;found&#34; : true,
+  &#34;_source&#34; : {
+    &#34;attachment&#34; : {   //attachment里面的其他字段可以通过配置管道的时候进行配置
+      &#34;content_type&#34; : &#34;text/plain; charset=UTF-8&#34;,
+      &#34;language&#34; : &#34;lt&#34;,
+      &#34;content&#34; : &#34;我爱你&#34;,    //content内容即为文本转换的内容
+      &#34;content_length&#34; : 4
+    }
+  }
+}
+//查询命令
+POST /pdftest/_search
+{
+  &#34;query&#34;: {
+    &#34;match_phrase&#34;: {
+      &#34;attachment.content&#34;: &#34;我爱&#34;
+    }
+  }
+}
+</code></pre><h3 id="参考">参考<a hidden class="anchor" aria-hidden="true" href="#参考">#</a></h3>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/ingest-attachment.html#ingest-attachment">https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/ingest-attachment.html#ingest-attachment</a></p>
+<p><a href="https://blog.csdn.net/wenxindiaolong061/article/details/82562450">https://blog.csdn.net/wenxindiaolong061/article/details/82562450</a></p>
+<p><a href="https://blog.csdn.net/m0_37739193/article/details/86421246">https://blog.csdn.net/m0_37739193/article/details/86421246</a></p>
+<p><a href="https://stackoverflow.com/questions/37861279/how-to-index-a-pdf-file-in-elasticsearch-5-0-0-with-ingest-attachment-plugin">https://stackoverflow.com/questions/37861279/how-to-index-a-pdf-file-in-elasticsearch-5-0-0-with-ingest-attachment-plugin</a></p>
+<p><a href="https://blog.csdn.net/LazyBoy_Z_z/article/details/82864264">https://blog.csdn.net/LazyBoy_Z_z/article/details/82864264</a></p>
+<h2 id="拼音搜索的实现">拼音搜索的实现<a hidden class="anchor" aria-hidden="true" href="#拼音搜索的实现">#</a></h2>
+<ul>
+<li>插件：https://github.com/medcl/elasticsearch-analysis-pinyin 版本：6.8.0</li>
+</ul>
+<h3 id="步骤-1">步骤<a hidden class="anchor" aria-hidden="true" href="#步骤-1">#</a></h3>
+<ol>
+<li>自定义分词器</li>
+</ol>
+<p>要使用「拼音插件」需要在创建索引时使用「自定义模板」并在自定义模板中「自定义分析器」。</p>
+<pre tabindex="0"><code>PUT /doc_resources
+{
+  &#34;settings&#34;: {
+    &#34;analysis&#34;: {
+      &#34;analyzer&#34;: {
+        &#34;user_name_analyzer&#34;: {
+          &#34;tokenizer&#34;: &#34;ik_smart&#34;,
+          &#34;filter&#34;: &#34;pinyin_first_letter_and_full_pinyin_filter&#34;
+        }
+      },
+      &#34;filter&#34;: {
+        &#34;pinyin_first_letter_and_full_pinyin_filter&#34;: {    //此处的配置可以参见github上插件说明页的可选项配置
+          &#34;type&#34;: &#34;pinyin&#34;,
+          &#34;keep_first_letter&#34;: true,
+          &#34;keep_full_pinyin&#34;: true,
+          &#34;keep_none_chinese&#34;: true,
+          &#34;keep_original&#34;: true,
+          &#34;limit_first_letter_length&#34;: 16,
+          &#34;lowercase&#34;: true,
+          &#34;trim_whitespace&#34;: true,
+          &#34;keep_none_chinese_in_first_letter&#34;: true,
+          &#34;ignore_pinyin_offset&#34;: true
+        }
+      }
+    }
+  }
+}
+</code></pre><ol start="2">
+<li>创建索引mapping</li>
+</ol>
+<pre tabindex="0"><code>POST /doc_resources/doc/_mapping
+{
+        &#34;properties&#34;: {
+            &#34;doc_name&#34;: {                        //字段名称
+                &#34;type&#34;: &#34;text&#34;,
+                &#34;analyzer&#34;: &#34;ik_smart&#34;,        //指定该字段为ik_smart分词
+                &#34;fields&#34;: {   
+                    &#34;pinyin&#34;: {                //子pinyin字段
+                        &#34;type&#34;: &#34;text&#34;,
+                        &#34;store&#34;: false,
+                        &#34;term_vector&#34;: &#34;with_offsets&#34;,
+                        &#34;analyzer&#34;: &#34;user_name_analyzer&#34;,    //指定为第一步的自定义拼音分词方式
+                        &#34;boost&#34;: 10
+                    }
+                }
+            }
+        } 
+}
+</code></pre><ol start="3">
+<li>导入数据</li>
+</ol>
+<pre tabindex="0"><code>PUT /doc_resources/doc/1/
+{
+  &#34;doc_name&#34;: &#34;因他“是香港最受尊重和喜爱的演艺名人之一，对香港电影及音乐贡献良多。其严谨专业的工作态度，足以成为年轻人的典范”，为了“表彰他在表演艺术方面的成就”而授予刘德华荣誉院士称号，&#34;
+}
+</code></pre><ol start="4">
+<li>在拼音字段上面做检索</li>
+</ol>
+<pre tabindex="0"><code>POST /doc_resources/_search
+{
+  &#34;query&#34;: {
+    &#34;match_phrase&#34;: {
+      &#34;doc_name.pinyin&#34;: &#34;liudehua&#34;
+    }
+  }
+}
+</code></pre><ol start="5">
+<li>查看分词的结果</li>
+</ol>
+<pre tabindex="0"><code>POST /doc_resources/_analyze
+{
+  &#34;analyzer&#34;: &#34;user_name_analyzer&#34;,
+  &#34;text&#34;: [&#34;刘德华&#34;]
+}
+</code></pre><h3 id="参考-1">参考<a hidden class="anchor" aria-hidden="true" href="#参考-1">#</a></h3>
+<p><a href="https://github.com/medcl/elasticsearch-analysis-pinyin">https://github.com/medcl/elasticsearch-analysis-pinyin</a></p>
+<p><a href="https://symonlin.github.io/2019/01/07/elasticsearch-4/">https://symonlin.github.io/2019/01/07/elasticsearch-4/</a></p>
+<h2 id="联合使用">联合使用<a hidden class="anchor" aria-hidden="true" href="#联合使用">#</a></h2>
+<p>接下来我们要将上面两个结合起来，使用非结构化文本导入&amp;&amp;拼音检索</p>
+<ul>
+<li>其实很简单，通过拼音的检索的配置流程我们可以看到，是将pinyin字段作为单独的一个子字段进行存放并且指定分词器为拼音分词器，那么一样的，只要预先定义好索引的结构（我们在非结构化数据导入的时候并没有定义好结构而是让es在导入数据的时候默认生成了），那么就能够实现拼音的效果了，定义的索引结构如下</li>
+</ul>
+<pre tabindex="0"><code>PUT /doc_resources/doc/_mapping
+{
+    &#34;doc&#34;: {
+        &#34;properties&#34;: {
+            &#34;attachment&#34;: {
+                &#34;properties&#34;: {
+                    &#34;content&#34;: {
+                        &#34;type&#34;: &#34;text&#34;,
+                        &#34;analyzer&#34;: &#34;ik_smart&#34;,
+                        &#34;fields&#34;: {
+                            &#34;keyword&#34;: {
+                                &#34;type&#34;: &#34;keyword&#34;,
+                                &#34;ignore_above&#34;: 256
+                            },
+                            &#34;pinyin&#34;: {
+                                &#34;type&#34;: &#34;text&#34;,
+                                &#34;store&#34;: false,
+                                &#34;term_vector&#34;: &#34;with_offsets&#34;,
+                                &#34;analyzer&#34;: &#34;user_name_analyzer&#34;,
+                                &#34;boost&#34;: 10
+                            }
+                        }
+                    },
+                    &#34;content_length&#34;: {
+                        &#34;type&#34;: &#34;long&#34;
+                    },
+                    &#34;content_type&#34;: {
+                        &#34;type&#34;: &#34;text&#34;,
+                        &#34;fields&#34;: {
+                            &#34;keyword&#34;: {
+                                &#34;type&#34;: &#34;keyword&#34;,
+                                &#34;ignore_above&#34;: 256
+                            }
+                        }
+                    },
+                    &#34;language&#34;: {
+                        &#34;type&#34;: &#34;text&#34;,
+                        &#34;fields&#34;: {
+                            &#34;keyword&#34;: {
+                                &#34;type&#34;: &#34;keyword&#34;,
+                                &#34;ignore_above&#34;: 256
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre><ul>
+<li>导入非结构化数据</li>
+</ul>
+<pre tabindex="0"><code>PUT /doc_resources/doc/2?pipeline=attachment
+{
+     &#34;data&#34;:&#34;5oiR54ix5L2g&#34;
+}
+</code></pre><ul>
+<li>查询数据</li>
+</ul>
+<pre tabindex="0"><code>POST /doc_resources/_search
+{
+  &#34;query&#34;: {
+    &#34;match_phrase&#34;: {
+      &#34;attachment.content.pinyin&#34;: &#34;woaini&#34;
+    }
+  }
+}
+
+//查询结果
+{
+  &#34;took&#34; : 5,
+  &#34;timed_out&#34; : false,
+  &#34;_shards&#34; : {
+    &#34;total&#34; : 5,
+    &#34;successful&#34; : 5,
+    &#34;skipped&#34; : 0,
+    &#34;failed&#34; : 0
+  },
+  &#34;hits&#34; : {
+    &#34;total&#34; : 1,
+    &#34;max_score&#34; : 2.6894288,
+    &#34;hits&#34; : [
+      {
+        &#34;_index&#34; : &#34;doc_resources&#34;,
+        &#34;_type&#34; : &#34;doc&#34;,
+        &#34;_id&#34; : &#34;2&#34;,
+        &#34;_score&#34; : 2.6894288,
+        &#34;_source&#34; : {
+          &#34;attachment&#34; : {
+            &#34;content_type&#34; : &#34;text/plain; charset=UTF-8&#34;,
+            &#34;language&#34; : &#34;lt&#34;,
+            &#34;content&#34; : &#34;我爱你&#34;,
+            &#34;content_length&#34; : 4
+          }
+        }
+      }
+    ]
+  }
+}
+</code></pre><h3 id="总结一下步骤流程">总结一下步骤流程<a hidden class="anchor" aria-hidden="true" href="#总结一下步骤流程">#</a></h3>
+<ol>
+<li>安装es，安装es插件（文本抽取，拼音分词）</li>
+<li>设置管道属性（attachment pipeline）</li>
+<li>设置指定索引的拼音分词器属性</li>
+<li>创建该索引的mapping结构</li>
+<li>文件转成base64，导入es</li>
+<li>在pinyin分词字段上进行查询</li>
+</ol>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.wuweizhao.com/tags/elasticsearch/">Elasticsearch</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://blog.wuweizhao.com/">一亩三分地</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

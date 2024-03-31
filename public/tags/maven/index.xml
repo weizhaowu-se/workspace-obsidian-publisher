@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Maven on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/maven/</link>
+    <description>Recent content in Maven on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Wed, 11 Oct 2017 20:59:19 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maven实战读书笔记</title>
+      <link>https://blog.wuweizhao.com/posts/maven%E5%AE%9E%E6%88%98%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 11 Oct 2017 20:59:19 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/maven%E5%AE%9E%E6%88%98%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h1 id=&#34;maven实战&#34;&gt;Maven实战&lt;/h1&gt;
+&lt;h2 id=&#34;常用命令&#34;&gt;常用命令&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;mvn clean compile&lt;/li&gt;
+&lt;li&gt;mvn clean test&lt;/li&gt;
+&lt;li&gt;mvn clean package
+&lt;ul&gt;
+&lt;li&gt;默认打包为jar,可以在pom.xml里面指定打包类型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;mvn clean install
+&lt;ul&gt;
+&lt;li&gt;将项目打包后安装到本地仓库以供其他项目使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;默认打包生成的jar时不能够直接运行的,为了生成可执行的jar文件,需要借助maven-shade-plugin&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

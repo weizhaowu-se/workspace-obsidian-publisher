@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>JavaScript on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/javascript/</link>
+    <description>Recent content in JavaScript on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Mon, 28 Aug 2017 22:39:49 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript中的面向对象程序设计</title>
+      <link>https://blog.wuweizhao.com/posts/javascript%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Mon, 28 Aug 2017 22:39:49 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/javascript%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;h1 id=&#34;javascript中的面向对象程序设计&#34;&gt;JavaScript中的面向对象程序设计&lt;/h1&gt;
+&lt;h2 id=&#34;1最简单的模式&#34;&gt;1.最简单的模式&lt;/h2&gt;
+&lt;h3 id=&#34;11-新建实例添加属性和方法&#34;&gt;1.1 新建实例添加属性和方法&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;	var person = new Object();
+	person.name = &amp;quot;name&amp;quot;;
+	person.sayHi = function() {
+	    console.log(&amp;quot;hi&amp;quot;);
+	}
+	
+	console.log(person.name);
+	person.sayHi();
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>javascript高级程序设计笔记</title>
+      <link>https://blog.wuweizhao.com/posts/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 18 Jul 2017 21:12:05 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;使用var定义的变量为局部变量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;省略var定义的变量为全局变量&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

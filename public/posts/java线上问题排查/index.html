@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>java线上问题排查 | 一亩三分地</title>
+<meta name="keywords" content="">
+<meta name="description" content="java线上问题排查
+系统线上运行时，跑着跑着总是可能会发生一些意料之外的事情，这里我们大致可以分为两类为问题，一类是CPU的问题，一类是内存的问题；而其中内存又可以分为内存泄漏与频繁GC，以下就从这几个方面展开探讨。">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.wuweizhao.com/posts/java%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4599eadb9eb2ad3d0a8d6827b41a8fda8f2f4af226b63466c09c5fddbc8706b7.css" integrity="sha256-RZnq256yrT0KjWgntBqP2o8vSvImtjRmwJxf3byHBrc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.wuweizhao.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.wuweizhao.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.wuweizhao.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.wuweizhao.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.wuweizhao.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.wuweizhao.com/posts/java%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="java线上问题排查" />
+<meta property="og:description" content="java线上问题排查
+系统线上运行时，跑着跑着总是可能会发生一些意料之外的事情，这里我们大致可以分为两类为问题，一类是CPU的问题，一类是内存的问题；而其中内存又可以分为内存泄漏与频繁GC，以下就从这几个方面展开探讨。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.wuweizhao.com/posts/java%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-26T21:46:52+00:00" />
+<meta property="article:modified_time" content="2020-05-26T21:46:52+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="java线上问题排查"/>
+<meta name="twitter:description" content="java线上问题排查
+系统线上运行时，跑着跑着总是可能会发生一些意料之外的事情，这里我们大致可以分为两类为问题，一类是CPU的问题，一类是内存的问题；而其中内存又可以分为内存泄漏与频繁GC，以下就从这几个方面展开探讨。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.wuweizhao.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "java线上问题排查",
+      "item": "https://blog.wuweizhao.com/posts/java%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "java线上问题排查",
+  "name": "java线上问题排查",
+  "description": "java线上问题排查 系统线上运行时，跑着跑着总是可能会发生一些意料之外的事情，这里我们大致可以分为两类为问题，一类是CPU的问题，一类是内存的问题；而其中内存又可以分为内存泄漏与频繁GC，以下就从这几个方面展开探讨。\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "java线上问题排查 系统线上运行时，跑着跑着总是可能会发生一些意料之外的事情，这里我们大致可以分为两类为问题，一类是CPU的问题，一类是内存的问题；而其中内存又可以分为内存泄漏与频繁GC，以下就从这几个方面展开探讨。\nCPU占用率高 前置：此处我们模拟一个会导致CPU飚高的场景：死循环 @RestController\rpublic class TestController {\r@RequestMapping(value = \"/cpu\", method = RequestMethod.GET)\rpublic void test() {\rwhile (true) {\r}\r}\r} 请求接口几次之外，查看本机的CPU占用率，执行top命令可以看到 PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND\r15165 wilbert 20 0 3481140 236596 13196 S 197.7 6.3 0:56.27 java 分析 从上面我们可以看到进程的ID为15165，我们都知道java是单进程多线程，接下来我们看下PID为1312进程里面线程的CPU占用情况，执行命令top -Hp 15165\nPID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND 15283 wilbert 20 0 3481140 236596 13196 R 86.7 6.3 1:04.36 http-nio-8080-e 15284 wilbert 20 0 3481140 236596 13196 R 60.0 6.3 0:38.89 http-nio-8080-e 15287 wilbert 20 0 3481140 236596 13196 R 53.3 6.3 0:17.27 http-nio-8080-e 这个时候我们可以看下具体线程的CPU占用率，我们此处以查看PID为15283的线程为例，将其转为十六进制，执行命令printf %x 15283，得到十六进制为\n3bb3 接下来通过jstack命令查看指定线程的堆栈信息jstack 15165 |grep -A 200 3bb3，可以看到如下内容\n\"http-nio-8080-exec-1\" #115 daemon prio=5 os_prio=0 tid=0x00007fbb5877f800 nid=0x3bb3 runnable [0x00007fbb0f9fa000]\rjava.lang.Thread.State: RUNNABLE\rat com.wilbert.java.check.demo.controller.TestController.test(TestController.java:15) 看到了内存的堆栈信息之后，我们就可以查看具体的代码TestController.java:15，然后再根据代码就可以分析出具体的原因了。\n内存问题 OOM 工具 jmap导出vm信息，visualvm分析vm信息 前置：我们先准备一个导致OOM的场景（通过不断在堆上创建对象实现） private static class TestOOM {\rprivate String string = \"\";\r}\rpublic static void main(String[] args) {\rList list = new ArrayList();\r//在堆中无限创建对象\rwhile (true) {\rlist.add(new TestOOM());\r}\r} 修改程序启动参数\n-Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/Users/wilbert/Documents/project/java-check/my.dump Xms 和Xmx分别代表初始和最大分配内存，后面两个代表在发生OOM的时候将内存信息dump到指定到文件上。main方法执行后，如愿以偿的看到\njava.lang.OutOfMemoryError: Java heap space\rDumping heap to /Users/wilbert/Documents/project/java-check/my.dump ...\rHeap dump file created [34385753 bytes in 0.189 secs]\rException in thread \"main\" java.lang.OutOfMemoryError: Java heap space\rat java.util.Arrays.copyOf(Arrays.java:3210)\rat java.util.Arrays.copyOf(Arrays.java:3181)\rat java.util.ArrayList.grow(ArrayList.java:265)\rat java.util.ArrayList.ensureExplicitCapacity(ArrayList.java:239)\rat java.util.ArrayList.ensureCapacityInternal(ArrayList.java:231)\rat java.util.ArrayList.add(ArrayList.java:462)\rat com.wilbert.java.check.demo.controller.TestController.main(TestController.java:41) 接下来我们借助visualvm对my.dump文件进行分析\n通过这个，我们可以很简单的看出是哪些对象占用了最多的堆内存，为我们的问题排查提供方向。\n一些内存泄漏导致无法GC的变量我们也可以通过对dump文件进行分析查看到。 频繁GC 工具：jstack 频繁GC与前面CPU占用率高和OOM这几者其实是互为因果关系的 查看GC情况 执行命令 jstat -gc 15165 1000，其中15165是进程号，1000是每隔1s打印一次\n当出现频繁的FGC的时候就需要关注了，可能是你的代码中存在内存泄漏，可以结合上面OOM问题中的jmap和visualvm对内存进行分析。\n",
+  "wordCount" : "221",
+  "inLanguage": "en",
+  "datePublished": "2020-05-26T21:46:52Z",
+  "dateModified": "2020-05-26T21:46:52Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.wuweizhao.com/posts/java%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "一亩三分地",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.wuweizhao.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.wuweizhao.com/" accesskey="h" title="一亩三分地 (Alt + H)">一亩三分地</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      java线上问题排查
+    </h1>
+    <div class="post-meta"><span title='2020-05-26 21:46:52 +0000 UTC'>May 26, 2020</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="java线上问题排查">java线上问题排查<a hidden class="anchor" aria-hidden="true" href="#java线上问题排查">#</a></h1>
+<p>系统线上运行时，跑着跑着总是可能会发生一些意料之外的事情，这里我们大致可以分为两类为问题，一类是CPU的问题，一类是内存的问题；而其中内存又可以分为内存泄漏与频繁GC，以下就从这几个方面展开探讨。</p>
+<h2 id="cpu占用率高">CPU占用率高<a hidden class="anchor" aria-hidden="true" href="#cpu占用率高">#</a></h2>
+<ul>
+<li>前置：此处我们模拟一个会导致CPU飚高的场景：死循环</li>
+</ul>
+<pre tabindex="0"><code>@RestController
+public class TestController {
+	@RequestMapping(value = &#34;/cpu&#34;, method = RequestMethod.GET)
+	public void test() {
+		while (true) {
+
+		}
+	}
+}
+</code></pre><ul>
+<li>请求接口几次之外，查看本机的CPU占用率，执行<code>top</code>命令可以看到</li>
+</ul>
+<pre tabindex="0"><code> PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+15165 wilbert   20   0 3481140 236596  13196 S 197.7  6.3   0:56.27 java 
+</code></pre><h3 id="分析">分析<a hidden class="anchor" aria-hidden="true" href="#分析">#</a></h3>
+<p>从上面我们可以看到进程的ID为15165，我们都知道java是单进程多线程，接下来我们看下PID为1312进程里面线程的CPU占用情况，执行命令<code>top -Hp 15165</code></p>
+<pre tabindex="0"><code>  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND                                                                                                               
+15283 wilbert   20   0 3481140 236596  13196 R 86.7  6.3   1:04.36 http-nio-8080-e                                                                                                      
+15284 wilbert   20   0 3481140 236596  13196 R 60.0  6.3   0:38.89 http-nio-8080-e                                                                                                      
+15287 wilbert   20   0 3481140 236596  13196 R 53.3  6.3   0:17.27 http-nio-8080-e
+</code></pre><p>这个时候我们可以看下具体线程的CPU占用率，我们此处以查看PID为15283的线程为例，将其转为十六进制，执行命令<code>printf %x 15283</code>，得到十六进制为</p>
+<pre tabindex="0"><code>3bb3
+</code></pre><p>接下来通过jstack命令查看指定线程的堆栈信息<code>jstack 15165 |grep -A 200 3bb3</code>，可以看到如下内容</p>
+<pre tabindex="0"><code>&#34;http-nio-8080-exec-1&#34; #115 daemon prio=5 os_prio=0 tid=0x00007fbb5877f800 nid=0x3bb3 runnable [0x00007fbb0f9fa000]
+   java.lang.Thread.State: RUNNABLE
+        at com.wilbert.java.check.demo.controller.TestController.test(TestController.java:15)
+</code></pre><p>看到了内存的堆栈信息之后，我们就可以查看具体的代码<code>TestController.java:15</code>，然后再根据代码就可以分析出具体的原因了。</p>
+<h2 id="内存问题">内存问题<a hidden class="anchor" aria-hidden="true" href="#内存问题">#</a></h2>
+<h3 id="oom">OOM<a hidden class="anchor" aria-hidden="true" href="#oom">#</a></h3>
+<ul>
+<li>工具 jmap导出vm信息，visualvm分析vm信息</li>
+<li>前置：我们先准备一个导致OOM的场景（通过不断在堆上创建对象实现）</li>
+</ul>
+<pre tabindex="0"><code>private static  class TestOOM {
+		private String string = &#34;&#34;;
+	}
+
+	public static void main(String[] args) {
+		List&lt;TestOOM&gt; list = new ArrayList&lt;TestOOM&gt;();
+		//在堆中无限创建对象
+		while (true) {
+			list.add(new TestOOM());
+		}
+	}
+</code></pre><p>修改程序启动参数</p>
+<pre tabindex="0"><code>-Xms20m -Xmx20m 
+-XX:+HeapDumpOnOutOfMemoryError 
+-XX:HeapDumpPath=/Users/wilbert/Documents/project/java-check/my.dump
+</code></pre><p>Xms 和Xmx分别代表初始和最大分配内存，后面两个代表在发生OOM的时候将内存信息dump到指定到文件上。main方法执行后，如愿以偿的看到</p>
+<pre tabindex="0"><code>java.lang.OutOfMemoryError: Java heap space
+Dumping heap to /Users/wilbert/Documents/project/java-check/my.dump ...
+Heap dump file created [34385753 bytes in 0.189 secs]
+Exception in thread &#34;main&#34; java.lang.OutOfMemoryError: Java heap space
+	at java.util.Arrays.copyOf(Arrays.java:3210)
+	at java.util.Arrays.copyOf(Arrays.java:3181)
+	at java.util.ArrayList.grow(ArrayList.java:265)
+	at java.util.ArrayList.ensureExplicitCapacity(ArrayList.java:239)
+	at java.util.ArrayList.ensureCapacityInternal(ArrayList.java:231)
+	at java.util.ArrayList.add(ArrayList.java:462)
+	at com.wilbert.java.check.demo.controller.TestController.main(TestController.java:41)
+</code></pre><p>接下来我们借助visualvm对my.dump文件进行分析</p>
+<p><img loading="lazy" src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf68oa983nj31ys0m6dnf.jpg" alt=""  />
+</p>
+<p>通过这个，我们可以很简单的看出是哪些对象占用了最多的堆内存，为我们的问题排查提供方向。</p>
+<ul>
+<li>一些内存泄漏导致无法GC的变量我们也可以通过对dump文件进行分析查看到。</li>
+</ul>
+<h3 id="频繁gc">频繁GC<a hidden class="anchor" aria-hidden="true" href="#频繁gc">#</a></h3>
+<ul>
+<li>工具：jstack</li>
+<li>频繁GC与前面CPU占用率高和OOM这几者其实是互为因果关系的</li>
+</ul>
+<h4 id="查看gc情况">查看GC情况<a hidden class="anchor" aria-hidden="true" href="#查看gc情况">#</a></h4>
+<p>执行命令<code> jstat  -gc 15165 1000</code>，其中15165是进程号，1000是每隔1s打印一次</p>
+<p><img loading="lazy" src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf68zmzjtoj31gc06sq58.jpg" alt=""  />
+</p>
+<p>当出现频繁的FGC的时候就需要关注了，可能是你的代码中存在内存泄漏，可以结合上面OOM问题中的jmap和visualvm对内存进行分析。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://blog.wuweizhao.com/">一亩三分地</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

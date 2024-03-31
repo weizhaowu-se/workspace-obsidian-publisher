@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>jwt基本概念及其在springboot的使用 | 一亩三分地</title>
+<meta name="keywords" content="">
+<meta name="description" content="jwt基本概念及其在springboot的使用
+jwt概念
+全称：json web token
+
+JSON Web Token 入门教程
+
+我的理解
+
+与传统的session认证方式最显著的区别在于，jwt将用户信息存放在客户端，每次请求服务时再将此部分信息传给服务器（一般是通过header参数传递的方式）
+jwt主要分为三个部分：
+
+header：标识签名的算法等属性
+payload：标识该jwt token的有效时间，签发人等信息，辨识调用方
+signature：对前两者的签名，避免被篡改
+
+
+">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.wuweizhao.com/posts/jwt%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%9C%A8springboot%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4599eadb9eb2ad3d0a8d6827b41a8fda8f2f4af226b63466c09c5fddbc8706b7.css" integrity="sha256-RZnq256yrT0KjWgntBqP2o8vSvImtjRmwJxf3byHBrc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.wuweizhao.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.wuweizhao.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.wuweizhao.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.wuweizhao.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.wuweizhao.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.wuweizhao.com/posts/jwt%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%9C%A8springboot%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="jwt基本概念及其在springboot的使用" />
+<meta property="og:description" content="jwt基本概念及其在springboot的使用
+jwt概念
+全称：json web token
+
+JSON Web Token 入门教程
+
+我的理解
+
+与传统的session认证方式最显著的区别在于，jwt将用户信息存放在客户端，每次请求服务时再将此部分信息传给服务器（一般是通过header参数传递的方式）
+jwt主要分为三个部分：
+
+header：标识签名的算法等属性
+payload：标识该jwt token的有效时间，签发人等信息，辨识调用方
+signature：对前两者的签名，避免被篡改
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.wuweizhao.com/posts/jwt%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%9C%A8springboot%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-03-01T10:45:45+00:00" />
+<meta property="article:modified_time" content="2020-03-01T10:45:45+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="jwt基本概念及其在springboot的使用"/>
+<meta name="twitter:description" content="jwt基本概念及其在springboot的使用
+jwt概念
+全称：json web token
+
+JSON Web Token 入门教程
+
+我的理解
+
+与传统的session认证方式最显著的区别在于，jwt将用户信息存放在客户端，每次请求服务时再将此部分信息传给服务器（一般是通过header参数传递的方式）
+jwt主要分为三个部分：
+
+header：标识签名的算法等属性
+payload：标识该jwt token的有效时间，签发人等信息，辨识调用方
+signature：对前两者的签名，避免被篡改
+
+
+"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.wuweizhao.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "jwt基本概念及其在springboot的使用",
+      "item": "https://blog.wuweizhao.com/posts/jwt%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%9C%A8springboot%E7%9A%84%E4%BD%BF%E7%94%A8/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "jwt基本概念及其在springboot的使用",
+  "name": "jwt基本概念及其在springboot的使用",
+  "description": "jwt基本概念及其在springboot的使用 jwt概念 全称：json web token\nJSON Web Token 入门教程 我的理解\n与传统的session认证方式最显著的区别在于，jwt将用户信息存放在客户端，每次请求服务时再将此部分信息传给服务器（一般是通过header参数传递的方式） jwt主要分为三个部分： header：标识签名的算法等属性 payload：标识该jwt token的有效时间，签发人等信息，辨识调用方 signature：对前两者的签名，避免被篡改 ",
+  "keywords": [
+    
+  ],
+  "articleBody": "jwt基本概念及其在springboot的使用 jwt概念 全称：json web token\nJSON Web Token 入门教程 我的理解\n与传统的session认证方式最显著的区别在于，jwt将用户信息存放在客户端，每次请求服务时再将此部分信息传给服务器（一般是通过header参数传递的方式） jwt主要分为三个部分： header：标识签名的算法等属性 payload：标识该jwt token的有效时间，签发人等信息，辨识调用方 signature：对前两者的签名，避免被篡改 一个jwt的流程如下\nspringboot中的使用 参考：\nSpring Boot Security 整合 JWT 实现 无状态的分布式API接口\nGitHub-springboot-jwt\n在spring security的基础上新增token的校验，关于spring security后续补充，此处说明下修改的地方，主要有如下几个地方：\n登录接口新增返回 jwttoken\n新增过滤器 JwtTokenFilter 对请求header参数的token进行校验\n修改http session状态为无状态\nSecurityConfig中修改：\n@Override\rprotected void configure(HttpSecurity http) throws Exception {\rhttp.csrf().disable()\r//因为使用JWT，所以不需要HttpSession\r.sessionManagement().sessionCreationPolicy( SessionCreationPolicy.STATELESS).and()\r.authorizeRequests()\r.antMatchers( HttpMethod.OPTIONS, \"/**\").permitAll()\r.antMatchers(\"/auth/login\").permitAll()\r.anyRequest().authenticated();\r//使用自定义的jwt Token过滤器 验证请求的Token是否合法\rhttp.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);\rhttp.headers().cacheControl();\r}\r@Bean\rpublic JwtTokenFilter authenticationTokenFilterBean() throws Exception {\rreturn new JwtTokenFilter();\r} 我理解的使用场景 正因为jwt的无状态的特性，那么对于服务器的横向扩展是十分方便的，但是同时也带来了一个问题，token签发之后一直到有效期结束之前都是有效的，所以无法实现类似A地登录B地退出，修改密码后所有客户端退出的功能，除非通过黑名单list的方式进行维护，通过黑名单的方式，借助于外界统一的存储介质（比如数据库或者redis），那么似乎就与jwt的无状态的特性相悖 基于以上的理解，jwt更适用于一些应用间的接口鉴权，而非web应用前后端的登录校验 参考资料 JSON Web Token 入门教程 Spring Boot Security 整合 JWT 实现 无状态的分布式API接口 讲真，别再使用JWT了！ ",
+  "wordCount" : "90",
+  "inLanguage": "en",
+  "datePublished": "2020-03-01T10:45:45Z",
+  "dateModified": "2020-03-01T10:45:45Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.wuweizhao.com/posts/jwt%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%9C%A8springboot%E7%9A%84%E4%BD%BF%E7%94%A8/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "一亩三分地",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.wuweizhao.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.wuweizhao.com/" accesskey="h" title="一亩三分地 (Alt + H)">一亩三分地</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      jwt基本概念及其在springboot的使用
+    </h1>
+    <div class="post-meta"><span title='2020-03-01 10:45:45 +0000 UTC'>March 1, 2020</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="jwt基本概念及其在springboot的使用">jwt基本概念及其在springboot的使用<a hidden class="anchor" aria-hidden="true" href="#jwt基本概念及其在springboot的使用">#</a></h1>
+<h2 id="jwt概念">jwt概念<a hidden class="anchor" aria-hidden="true" href="#jwt概念">#</a></h2>
+<p>全称：json web token</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html">JSON Web Token 入门教程</a></li>
+</ul>
+<p>我的理解</p>
+<ol>
+<li>与传统的session认证方式最显著的区别在于，jwt将用户信息存放在客户端，每次请求服务时再将此部分信息传给服务器（一般是通过header参数传递的方式）</li>
+<li>jwt主要分为三个部分：
+<ul>
+<li>header：标识签名的算法等属性</li>
+<li>payload：标识该jwt token的有效时间，签发人等信息，辨识调用方</li>
+<li>signature：对前两者的签名，避免被篡改</li>
+</ul>
+</li>
+</ol>
+<p>一个jwt的流程如下</p>
+<p><img loading="lazy" src="https://tva1.sinaimg.cn/large/00831rSTgy1gce8yo9ouwj30fb0f10tm.jpg" alt="jwt登录流程图"  />
+</p>
+<h2 id="springboot中的使用">springboot中的使用<a hidden class="anchor" aria-hidden="true" href="#springboot中的使用">#</a></h2>
+<p>参考：</p>
+<ul>
+<li>
+<p><a href="https://juejin.im/post/5ca162b36fb9a05e181de126">Spring Boot Security 整合 JWT 实现 无状态的分布式API接口</a></p>
+</li>
+<li>
+<p><a href="https://github.com/gf-huanchupk/SpringBootLearning/tree/master/springboot-jwt">GitHub-springboot-jwt</a></p>
+<p>在spring security的基础上新增token的校验，关于spring security后续补充，此处说明下修改的地方，主要有如下几个地方：</p>
+</li>
+<li>
+<p>登录接口新增返回  jwttoken</p>
+</li>
+<li>
+<p>新增过滤器 JwtTokenFilter 对请求header参数的token进行校验</p>
+</li>
+<li>
+<p>修改http session状态为无状态</p>
+</li>
+</ul>
+<p>SecurityConfig中修改：</p>
+<pre tabindex="0"><code>@Override
+	protected void configure(HttpSecurity http) throws Exception {
+
+		http.csrf().disable()
+				//因为使用JWT，所以不需要HttpSession
+				.sessionManagement().sessionCreationPolicy( SessionCreationPolicy.STATELESS).and()
+				.authorizeRequests()
+				.antMatchers( HttpMethod.OPTIONS, &#34;/**&#34;).permitAll()
+				.antMatchers(&#34;/auth/login&#34;).permitAll()
+				.anyRequest().authenticated();
+
+		//使用自定义的jwt Token过滤器 验证请求的Token是否合法
+		http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+		http.headers().cacheControl();
+	}
+	
+	@Bean
+	public JwtTokenFilter authenticationTokenFilterBean() throws Exception {
+		return new JwtTokenFilter();
+	}
+</code></pre><h2 id="我理解的使用场景">我理解的使用场景<a hidden class="anchor" aria-hidden="true" href="#我理解的使用场景">#</a></h2>
+<ul>
+<li>正因为jwt的无状态的特性，那么对于服务器的横向扩展是十分方便的，但是同时也带来了一个问题，token签发之后一直到有效期结束之前都是有效的，所以无法实现类似A地登录B地退出，修改密码后所有客户端退出的功能，除非通过黑名单list的方式进行维护，通过黑名单的方式，借助于外界统一的存储介质（比如数据库或者redis），那么似乎就与jwt的无状态的特性相悖</li>
+<li>基于以上的理解，jwt更适用于一些应用间的接口鉴权，而非web应用前后端的登录校验</li>
+</ul>
+<h2 id="参考资料">参考资料<a hidden class="anchor" aria-hidden="true" href="#参考资料">#</a></h2>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html">JSON Web Token 入门教程</a></li>
+<li><a href="https://juejin.im/post/5ca162b36fb9a05e181de126">Spring Boot Security 整合 JWT 实现 无状态的分布式API接口</a></li>
+<li><a href="https://juejin.im/entry/5993a030f265da24941202c2">讲真，别再使用JWT了！</a></li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://blog.wuweizhao.com/">一亩三分地</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

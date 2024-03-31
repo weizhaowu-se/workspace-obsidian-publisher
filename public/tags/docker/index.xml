@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Docker on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/docker/</link>
+    <description>Recent content in Docker on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Wed, 17 Jun 2020 23:33:58 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker安装mysql-5.7</title>
+      <link>https://blog.wuweizhao.com/posts/docker%E5%AE%89%E8%A3%85mysql-5-7/</link>
+      <pubDate>Wed, 17 Jun 2020 23:33:58 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/docker%E5%AE%89%E8%A3%85mysql-5-7/</guid>
+      <description>&lt;h1 id=&#34;docker安装mysql-57&#34;&gt;docker安装mysql-5.7&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;拉取镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker pull mysql:5.7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;拉取成功&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlgy1gfvpkx6g6qj31yq04c3zb.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>mac下docker修改国内镜像源</title>
+      <link>https://blog.wuweizhao.com/posts/mac%E4%B8%8Bdocker%E4%BF%AE%E6%94%B9%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+      <pubDate>Wed, 17 Jun 2020 23:31:33 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mac%E4%B8%8Bdocker%E4%BF%AE%E6%94%B9%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+      <description>mac下docker修改国内镜像源 打开Preferences配置 打开配置项 新增如下配置 &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://md4nbj2f.mirror.aliyuncs.com&amp;#34;] </description>
+    </item>
+    <item>
+      <title>docker私有仓库及k8s部署本地镜像</title>
+      <link>https://blog.wuweizhao.com/posts/docker%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E5%8F%8Ak8s%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F/</link>
+      <pubDate>Sun, 19 Apr 2020 16:26:10 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/docker%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E5%8F%8Ak8s%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F/</guid>
+      <description>&lt;h1 id=&#34;docker私有仓库及k8s部署本地镜像&#34;&gt;docker私有仓库及k8s部署本地镜像&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;执行命令启动私有仓库&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run -p 5000:5000 registry:2.0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行命令后，会从DockerHub上拉取registry镜像并在本地启动Registry服务，并监听5000端口。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>sprintboot&amp;docker&amp;HelloWorld</title>
+      <link>https://blog.wuweizhao.com/posts/sprintboot-docker-helloworld/</link>
+      <pubDate>Sun, 19 Apr 2020 16:05:14 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/sprintboot-docker-helloworld/</guid>
+      <description>&lt;h1 id=&#34;sprintbootdockerhelloworld&#34;&gt;sprintboot&amp;amp;docker&amp;amp;HelloWorld&lt;/h1&gt;
+&lt;h2 id=&#34;初始化springboot项目&#34;&gt;初始化springboot项目&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化springboot项目&lt;/li&gt;
+&lt;li&gt;新建HelloController&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;@RestController
+public class HelloController {
+	@RequestMapping(value = &amp;#34;/&amp;#34;, method = RequestMethod.GET)
+	public String hello() {
+		return &amp;#34;hello docker demo&amp;#34;;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>mac下安装k8s&amp;docker及HelloWorld</title>
+      <link>https://blog.wuweizhao.com/posts/mac%E4%B8%8B%E5%AE%89%E8%A3%85k8s-docker%E5%8F%8Ahelloworld/</link>
+      <pubDate>Sat, 18 Apr 2020 17:05:04 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mac%E4%B8%8B%E5%AE%89%E8%A3%85k8s-docker%E5%8F%8Ahelloworld/</guid>
+      <description>&lt;h1 id=&#34;mac下安装k8sdocker及helloworld&#34;&gt;mac下安装k8s&amp;amp;docker及HelloWorld&lt;/h1&gt;
+&lt;p&gt;安装环境：macOS&lt;/p&gt;
+&lt;h2 id=&#34;安装docker&#34;&gt;安装docker&lt;/h2&gt;
+&lt;p&gt;下载地址：https://hub.docker.com/editions/community/docker-ce-desktop-mac&lt;/p&gt;
+&lt;p&gt;无脑点击下一步即可&lt;/p&gt;
+&lt;h2 id=&#34;启用k8s&#34;&gt;启用k8s&lt;/h2&gt;
+&lt;p&gt;打开docker&amp;mdash;preference&amp;mdash;kurbernets，勾上Enable Kurbernets，注意，勾选上之后需要下载文件，这个过程比较耗时，需要耐心等待&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

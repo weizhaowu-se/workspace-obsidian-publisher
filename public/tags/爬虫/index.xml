@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>爬虫 on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/%E7%88%AC%E8%99%AB/</link>
+    <description>Recent content in 爬虫 on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Sun, 28 Jan 2018 22:52:21 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python-scrapy</title>
+      <link>https://blog.wuweizhao.com/posts/python-scrapy/</link>
+      <pubDate>Sun, 28 Jan 2018 22:52:21 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/python-scrapy/</guid>
+      <description>&lt;h1 id=&#34;scrapy爬虫框架&#34;&gt;scrapy爬虫框架&lt;/h1&gt;
+&lt;h2 id=&#34;入门&#34;&gt;入门&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开始项目以及创建爬虫(参照命令行工具)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  scrapy startproject myproject  //初始化项目
+  cd myproject
+  scrapy genspider mydomain mydomain.com  //创建spider
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

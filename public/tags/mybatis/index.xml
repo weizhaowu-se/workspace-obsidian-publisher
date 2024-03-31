@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mybatis on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/mybatis/</link>
+    <description>Recent content in Mybatis on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Wed, 23 Aug 2017 20:39:27 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mybatis入门以及整合spring</title>
+      <link>https://blog.wuweizhao.com/posts/mybatis%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88spring/</link>
+      <pubDate>Wed, 23 Aug 2017 20:39:27 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mybatis%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88spring/</guid>
+      <description>&lt;h1 id=&#34;mybatis入门&#34;&gt;mybatis入门&lt;/h1&gt;
+&lt;h2 id=&#34;什么是mybatis&#34;&gt;什么是mybatis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MyBatis是一个Java持久化框架，它通过XML描述符或注解把对象与存储过程或SQL语句关联起来(from维基百科)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;mybatis的jar包&lt;/li&gt;
+&lt;li&gt;一个数据库(我采用的是mysql)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;具体如下&#34;&gt;具体如下&lt;/h2&gt;
+&lt;h3 id=&#34;数据库结构如下&#34;&gt;数据库结构如下&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://7xkzud.com1.z0.glb.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20170823210127.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

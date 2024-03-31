@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Elasticsearch on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/elasticsearch/</link>
+    <description>Recent content in Elasticsearch on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Sun, 16 Aug 2020 11:08:16 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>elasticsearch之文本导入及拼音搜索实现</title>
+      <link>https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sun, 16 Aug 2020 11:08:16 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/elasticsearch%E4%B9%8B%E6%96%87%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;h1 id=&#34;elasticsearch之文本导入及拼音搜索实现&#34;&gt;elasticsearch之文本导入及拼音搜索实现&lt;/h1&gt;
+&lt;p&gt;需求：非结构化数据（word，pdf等文档）导入es，实现全文检索的功能（包括拼音检索功能）&lt;/p&gt;
+&lt;p&gt;本文会先从非结构化数据导入es，还有拼音搜索的实现，以及最后两者的联合应用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本文基于es版本6.8.0&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>elk部署-helloWorld</title>
+      <link>https://blog.wuweizhao.com/posts/elk%E9%83%A8%E7%BD%B2-helloworld/</link>
+      <pubDate>Wed, 29 Apr 2020 21:13:04 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/elk%E9%83%A8%E7%BD%B2-helloworld/</guid>
+      <description>&lt;h1 id=&#34;elk部署-helloworld&#34;&gt;elk部署-helloWorld&lt;/h1&gt;
+&lt;h2 id=&#34;elasticsearch&#34;&gt;elasticsearch&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;下载地址 &lt;a href=&#34;https://www.elastic.co/cn/start&#34;&gt;https://www.elastic.co/cn/start&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;解压文件 elasticsearch-6.2.2&lt;/li&gt;
+&lt;li&gt;启动，进入bin文件夹，执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./elasticsearch
+./elasticsearch -d   #后台模式运行
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>springboot前后端分离实践 | 一亩三分地</title>
+<meta name="keywords" content="">
+<meta name="description" content="springboot前后端分离实践 前言 现在很多项目都是采用springboot&#43;react或者springboot&#43;angularJs的模式进行开发,相对应的部署方式我认为主要有两种
+打包后将前端静态文件放在resource下的文件夹里面 利用nginx的反向代理,将前端文件与后台程序分开部署. 而这两者中,我认为后者相对来说更好一些.
+部署 **要点:**nginx反向代理
+安装nginx yum install nginx 常用命令如下 nginx nginx -s stopnginx -s reloadnginx -t 默认配置文件位置 /etc/nginx/nginx.conf 配置nginx **重要:**配置文件位置/etc/nginx/nginx.conf
+配置前端文件目录 在对应的server里配置
+root /usr/share/nginx/html 备注:默认为此,不需要设置
+配置反向代理 在对应的server里配置
+location /api/ {proxy_pass http://localhost:8083/api/;} 备注:此处的localhost:8083为springboot项目启动的机器ip和端口,也就是说前后端不需要部署在同一台机器上.
+部署springboot 将springboot程序包部署启动 后记 很多人可能会有疑问,为什么要用反向代理呢?其实原因很简单:跨域.如果仅仅是将nginx作为前端的容器,然后由前端去直接请求springboot后台接口的话,是会有跨域问题的,这些请求是会被浏览器拦截的. 运用nginx的负载均衡,更进一步的话,我们可以在反向代理的时候通过nginx的upstream功能来实现负载均衡,可以指定轮询的策略. ">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.wuweizhao.com/posts/springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%AE%9E%E8%B7%B5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4599eadb9eb2ad3d0a8d6827b41a8fda8f2f4af226b63466c09c5fddbc8706b7.css" integrity="sha256-RZnq256yrT0KjWgntBqP2o8vSvImtjRmwJxf3byHBrc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.wuweizhao.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.wuweizhao.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.wuweizhao.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.wuweizhao.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.wuweizhao.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.wuweizhao.com/posts/springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%AE%9E%E8%B7%B5/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="springboot前后端分离实践" />
+<meta property="og:description" content="springboot前后端分离实践 前言 现在很多项目都是采用springboot&#43;react或者springboot&#43;angularJs的模式进行开发,相对应的部署方式我认为主要有两种
+打包后将前端静态文件放在resource下的文件夹里面 利用nginx的反向代理,将前端文件与后台程序分开部署. 而这两者中,我认为后者相对来说更好一些.
+部署 **要点:**nginx反向代理
+安装nginx yum install nginx 常用命令如下 nginx nginx -s stopnginx -s reloadnginx -t 默认配置文件位置 /etc/nginx/nginx.conf 配置nginx **重要:**配置文件位置/etc/nginx/nginx.conf
+配置前端文件目录 在对应的server里配置
+root /usr/share/nginx/html 备注:默认为此,不需要设置
+配置反向代理 在对应的server里配置
+location /api/ {proxy_pass http://localhost:8083/api/;} 备注:此处的localhost:8083为springboot项目启动的机器ip和端口,也就是说前后端不需要部署在同一台机器上.
+部署springboot 将springboot程序包部署启动 后记 很多人可能会有疑问,为什么要用反向代理呢?其实原因很简单:跨域.如果仅仅是将nginx作为前端的容器,然后由前端去直接请求springboot后台接口的话,是会有跨域问题的,这些请求是会被浏览器拦截的. 运用nginx的负载均衡,更进一步的话,我们可以在反向代理的时候通过nginx的upstream功能来实现负载均衡,可以指定轮询的策略. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.wuweizhao.com/posts/springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%AE%9E%E8%B7%B5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-03-19T22:56:51+00:00" />
+<meta property="article:modified_time" content="2019-03-19T22:56:51+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="springboot前后端分离实践"/>
+<meta name="twitter:description" content="springboot前后端分离实践 前言 现在很多项目都是采用springboot&#43;react或者springboot&#43;angularJs的模式进行开发,相对应的部署方式我认为主要有两种
+打包后将前端静态文件放在resource下的文件夹里面 利用nginx的反向代理,将前端文件与后台程序分开部署. 而这两者中,我认为后者相对来说更好一些.
+部署 **要点:**nginx反向代理
+安装nginx yum install nginx 常用命令如下 nginx nginx -s stopnginx -s reloadnginx -t 默认配置文件位置 /etc/nginx/nginx.conf 配置nginx **重要:**配置文件位置/etc/nginx/nginx.conf
+配置前端文件目录 在对应的server里配置
+root /usr/share/nginx/html 备注:默认为此,不需要设置
+配置反向代理 在对应的server里配置
+location /api/ {proxy_pass http://localhost:8083/api/;} 备注:此处的localhost:8083为springboot项目启动的机器ip和端口,也就是说前后端不需要部署在同一台机器上.
+部署springboot 将springboot程序包部署启动 后记 很多人可能会有疑问,为什么要用反向代理呢?其实原因很简单:跨域.如果仅仅是将nginx作为前端的容器,然后由前端去直接请求springboot后台接口的话,是会有跨域问题的,这些请求是会被浏览器拦截的. 运用nginx的负载均衡,更进一步的话,我们可以在反向代理的时候通过nginx的upstream功能来实现负载均衡,可以指定轮询的策略. "/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.wuweizhao.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "springboot前后端分离实践",
+      "item": "https://blog.wuweizhao.com/posts/springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%AE%9E%E8%B7%B5/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "springboot前后端分离实践",
+  "name": "springboot前后端分离实践",
+  "description": "springboot前后端分离实践 前言 现在很多项目都是采用springboot+react或者springboot+angularJs的模式进行开发,相对应的部署方式我认为主要有两种\n打包后将前端静态文件放在resource下的文件夹里面 利用nginx的反向代理,将前端文件与后台程序分开部署. 而这两者中,我认为后者相对来说更好一些.\n部署 **要点:**nginx反向代理\n安装nginx yum install nginx 常用命令如下 nginx nginx -s stop\rnginx -s reload\rnginx -t 默认配置文件位置 /etc/nginx/nginx.conf 配置nginx **重要:**配置文件位置/etc/nginx/nginx.conf\n配置前端文件目录 在对应的server里配置\nroot /usr/share/nginx/html 备注:默认为此,不需要设置\n配置反向代理 在对应的server里配置\nlocation /api/ {\rproxy_pass http://localhost:8083/api/;\r} 备注:此处的localhost:8083为springboot项目启动的机器ip和端口,也就是说前后端不需要部署在同一台机器上.\n部署springboot 将springboot程序包部署启动 后记 很多人可能会有疑问,为什么要用反向代理呢?其实原因很简单:跨域.如果仅仅是将nginx作为前端的容器,然后由前端去直接请求springboot后台接口的话,是会有跨域问题的,这些请求是会被浏览器拦截的. 运用nginx的负载均衡,更进一步的话,我们可以在反向代理的时候通过nginx的upstream功能来实现负载均衡,可以指定轮询的策略. ",
+  "keywords": [
+    
+  ],
+  "articleBody": "springboot前后端分离实践 前言 现在很多项目都是采用springboot+react或者springboot+angularJs的模式进行开发,相对应的部署方式我认为主要有两种\n打包后将前端静态文件放在resource下的文件夹里面 利用nginx的反向代理,将前端文件与后台程序分开部署. 而这两者中,我认为后者相对来说更好一些.\n部署 **要点:**nginx反向代理\n安装nginx yum install nginx 常用命令如下 nginx nginx -s stop\rnginx -s reload\rnginx -t 默认配置文件位置 /etc/nginx/nginx.conf 配置nginx **重要:**配置文件位置/etc/nginx/nginx.conf\n配置前端文件目录 在对应的server里配置\nroot /usr/share/nginx/html 备注:默认为此,不需要设置\n配置反向代理 在对应的server里配置\nlocation /api/ {\rproxy_pass http://localhost:8083/api/;\r} 备注:此处的localhost:8083为springboot项目启动的机器ip和端口,也就是说前后端不需要部署在同一台机器上.\n部署springboot 将springboot程序包部署启动 后记 很多人可能会有疑问,为什么要用反向代理呢?其实原因很简单:跨域.如果仅仅是将nginx作为前端的容器,然后由前端去直接请求springboot后台接口的话,是会有跨域问题的,这些请求是会被浏览器拦截的. 运用nginx的负载均衡,更进一步的话,我们可以在反向代理的时候通过nginx的upstream功能来实现负载均衡,可以指定轮询的策略. ",
+  "wordCount" : "45",
+  "inLanguage": "en",
+  "datePublished": "2019-03-19T22:56:51Z",
+  "dateModified": "2019-03-19T22:56:51Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.wuweizhao.com/posts/springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%AE%9E%E8%B7%B5/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "一亩三分地",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.wuweizhao.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.wuweizhao.com/" accesskey="h" title="一亩三分地 (Alt + H)">一亩三分地</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      springboot前后端分离实践
+    </h1>
+    <div class="post-meta"><span title='2019-03-19 22:56:51 +0000 UTC'>March 19, 2019</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="springboot前后端分离实践">springboot前后端分离实践<a hidden class="anchor" aria-hidden="true" href="#springboot前后端分离实践">#</a></h1>
+<h2 id="前言">前言<a hidden class="anchor" aria-hidden="true" href="#前言">#</a></h2>
+<p>现在很多项目都是采用springboot+react或者springboot+angularJs的模式进行开发,相对应的部署方式我认为主要有两种</p>
+<ol>
+<li>打包后将前端静态文件放在resource下的文件夹里面</li>
+<li>利用nginx的反向代理,将前端文件与后台程序分开部署.</li>
+</ol>
+<p>而这两者中,我认为后者相对来说更好一些.</p>
+<h2 id="部署">部署<a hidden class="anchor" aria-hidden="true" href="#部署">#</a></h2>
+<p>**要点:**nginx反向代理</p>
+<h3 id="安装nginx">安装nginx<a hidden class="anchor" aria-hidden="true" href="#安装nginx">#</a></h3>
+<pre tabindex="0"><code>yum install nginx
+</code></pre><ul>
+<li>常用命令如下</li>
+</ul>
+<pre tabindex="0"><code>nginx 
+nginx -s stop
+nginx -s reload
+nginx -t
+</code></pre><ul>
+<li>默认配置文件位置</li>
+</ul>
+<pre tabindex="0"><code>/etc/nginx/nginx.conf
+</code></pre><h3 id="配置nginx">配置nginx<a hidden class="anchor" aria-hidden="true" href="#配置nginx">#</a></h3>
+<p>**重要:**配置文件位置<code>/etc/nginx/nginx.conf</code></p>
+<h4 id="配置前端文件目录">配置前端文件目录<a hidden class="anchor" aria-hidden="true" href="#配置前端文件目录">#</a></h4>
+<p>在对应的server里配置</p>
+<pre tabindex="0"><code>root         /usr/share/nginx/html
+</code></pre><p>备注:默认为此,不需要设置</p>
+<h4 id="配置反向代理">配置反向代理<a hidden class="anchor" aria-hidden="true" href="#配置反向代理">#</a></h4>
+<p>在对应的server里配置</p>
+<pre tabindex="0"><code>location /api/ {
+              proxy_pass http://localhost:8083/api/;
+ }  
+</code></pre><p>备注:此处的localhost:8083为springboot项目启动的机器ip和端口,也就是说前后端不需要部署在同一台机器上.</p>
+<h3 id="部署springboot">部署springboot<a hidden class="anchor" aria-hidden="true" href="#部署springboot">#</a></h3>
+<pre tabindex="0"><code>将springboot程序包部署启动
+</code></pre><h3 id="后记">后记<a hidden class="anchor" aria-hidden="true" href="#后记">#</a></h3>
+<ol>
+<li>很多人可能会有疑问,为什么要用反向代理呢?其实原因很简单:跨域.如果仅仅是将nginx作为前端的容器,然后由前端去直接请求springboot后台接口的话,是会有跨域问题的,这些请求是会被浏览器拦截的.</li>
+<li>运用nginx的负载均衡,更进一步的话,我们可以在反向代理的时候通过nginx的upstream功能来实现负载均衡,可以指定轮询的策略.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://blog.wuweizhao.com/">一亩三分地</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

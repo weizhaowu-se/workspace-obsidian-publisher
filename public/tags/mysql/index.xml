@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mysql on 一亩三分地</title>
+    <link>https://blog.wuweizhao.com/tags/mysql/</link>
+    <description>Recent content in Mysql on 一亩三分地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Wed, 17 Jun 2020 23:55:08 +0000</lastBuildDate>
+    <atom:link href="https://blog.wuweizhao.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql-binlog之主从同步</title>
+      <link>https://blog.wuweizhao.com/posts/mysql-binlog%E4%B9%8B%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Wed, 17 Jun 2020 23:55:08 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/mysql-binlog%E4%B9%8B%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</guid>
+      <description>&lt;h1 id=&#34;mysql-binlog之主从同步&#34;&gt;mysql-binlog之主从同步&lt;/h1&gt;
+&lt;p&gt;基于上一篇我们已经在本地环境安装了两个mysql，这里我们来进行简单的配置来实现基于binlog的主从复制。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>docker安装mysql-5.7</title>
+      <link>https://blog.wuweizhao.com/posts/docker%E5%AE%89%E8%A3%85mysql-5-7/</link>
+      <pubDate>Wed, 17 Jun 2020 23:33:58 +0000</pubDate>
+      <guid>https://blog.wuweizhao.com/posts/docker%E5%AE%89%E8%A3%85mysql-5-7/</guid>
+      <description>&lt;h1 id=&#34;docker安装mysql-57&#34;&gt;docker安装mysql-5.7&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;拉取镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker pull mysql:5.7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;拉取成功&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlgy1gfvpkx6g6qj31yq04c3zb.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
