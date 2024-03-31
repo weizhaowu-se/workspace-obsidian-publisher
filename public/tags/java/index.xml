@@ -1,135 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Java on 一亩三分地</title>
-    <link>https://blog.wuweizhao.com/tags/java/</link>
-    <description>Recent content in Java on 一亩三分地</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-hans</language>
-    <lastBuildDate>Mon, 18 Mar 2019 21:01:35 +0000</lastBuildDate>
-    <atom:link href="https://blog.wuweizhao.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>springboot数据库与mybatis</title>
-      <link>https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/</link>
-      <pubDate>Mon, 18 Mar 2019 21:01:35 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/</guid>
-      <description>springboot数据库与mybatis入门配置 初始化工程 参考链接:https://blog.csdn.net/typa01_kk/article/details/76696618
-数据库配置以及测试 在application.properties配置如下
-spring.datasource.url=jdbc:mysql://127.0.0.1:3306/testspring.datasource.username=rootspring.datasource.password=passwordspring.datasource.driver-class-name=com.mysql.jdbc.Driverspring.datasource.max-idle=10spring.datasource.max-wait=10000spring.datasource.min-idle=5spring.datasource.initial-size=5 通过jdbcTemplate的方式访问数据库
-@RunWith(SpringRunner.class)@SpringBootTestpublic class DemoSpringbootApplicationTests {@AutowiredJdbcTemplate jdbcTemplate;@Testpublic void contextLoads() {String sql = &amp;#34;select * from user&amp;#34;;List&amp;lt;Map&amp;lt;String, Object&amp;gt;&amp;gt; resultList = jdbcTemplate.queryForList(sql);System.out.println(&amp;#34;query result:&amp;#34; + JSON.toJSONString(resultList));for (Map&amp;lt;String, Object&amp;gt; item: resultList) {for (Map.Entry&amp;lt;String, Object&amp;gt; entry: item.entrySet()) {System.out.println(entry.getKey() + &amp;#34;:&amp;#34; + entry.getValue().toString());System.out.println(&amp;#34;\n&amp;#34;);}}}} 日志打印如下:
-query result:[{&amp;#34;id&amp;#34;:1,&amp;#34;name&amp;#34;:&amp;#34;test&amp;#34;}]id:1name:test 成功访问数据库.</description>
-    </item>
-    <item>
-      <title>关于java 中的equals的一些记录</title>
-      <link>https://blog.wuweizhao.com/posts/%E5%85%B3%E4%BA%8Ejava-%E4%B8%AD%E7%9A%84equals%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Sun, 21 Oct 2018 21:39:15 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/%E5%85%B3%E4%BA%8Ejava-%E4%B8%AD%E7%9A%84equals%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</guid>
-      <description>&lt;h3 id=&#34;override-equals方法的几个原则&#34;&gt;override equals方法的几个原则&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;自反性。对于任何非null的引用值x，x.equals(x)应返回true。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;对称性。对于任何非null的引用值x与y，当且仅当：y.equals(x)返回true时，x.equals(y)才返回true。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;传递性。对于任何非null的引用值x、y与z，如果y.equals(x)返回true，y.equals(z)返回true，那么x.equals(z)也应返回true。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;一致性。对于任何非null的引用值x与y，假设对象上equals比较中的信息没有被修改，则多次调用x.equals(y)始终返回true或者始终返回false。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</description>
-    </item>
-    <item>
-      <title>session与cookie</title>
-      <link>https://blog.wuweizhao.com/posts/session%E4%B8%8Ecookie/</link>
-      <pubDate>Wed, 07 Feb 2018 13:42:52 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/session%E4%B8%8Ecookie/</guid>
-      <description>&lt;h1 id=&#34;session与cookie&#34;&gt;session与cookie&lt;/h1&gt;
-&lt;h2 id=&#34;cookie&#34;&gt;cookie&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;在服务端中设置,在前端中需要看情况
-&lt;ul&gt;
-&lt;li&gt;当设置了httponly时,仅能在服务端设置,js端既不能读取也不能够设置.&lt;/li&gt;
-&lt;li&gt;无设置httponly时,前端也可以设置和读取cookie的值&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>web线程安全</title>
-      <link>https://blog.wuweizhao.com/posts/web%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</link>
-      <pubDate>Wed, 24 Jan 2018 10:34:17 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/web%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</guid>
-      <description>java web中的线程安全问题 问题描述: 伪代码: 判断redis是否有相应的键值对: 有: 读取redis 没有: 读取数据库 插入redis(列表的插入) 返回 问题 当请求并发时,第一个请求redis未插入而第二个请求也进入了判断,此时第二个请求的判断条件也是&amp;quot;否&amp;quot;,所以就会出现redis数据重复的情况.
-原因 虽然说对于每一个单独的请求,spring都是新建一个单独的线程来进行处理,但是这并不能够解决上面的问题,究其原因,则是访问了同一个全局数据(可以认为是redis)
-解决: 增加一个全局变量,使用synchronize同步方法,伪代码如下
-伪代码 全局变量 lock 判断redis是否有相应的键值对: 有: 读取redis 没有: synchronize(lock) 再次判断redis是否有相应的键值对 有: 读取redis 没有: 读取数据库 插入redis 再次判断的原因:加锁只是阻塞了第二个请求的读取数据库/插入redis操作,如果没有再次判断的话,那么当第一个请求释放锁之后第二个请求依旧会再次读取数据库/插入redis,问题依旧存在 参考 http://www.cnblogs.com/doit8791/p/4093808.html</description>
-    </item>
-    <item>
-      <title>JAVA NIO</title>
-      <link>https://blog.wuweizhao.com/posts/java-nio/</link>
-      <pubDate>Wed, 23 Aug 2017 20:31:21 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/java-nio/</guid>
-      <description>参考资料:https://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html 主要概念: 通道(channel) 缓冲区(buffer) 主要思想: 在原来的IO的思想上封装,提高IO效率 方法: 通过缓冲区实现基于块的读写 具体: 先获得文件的输入输出流&amp;ndash;&amp;gt;从文件的输入输出流获得通道(channel) &amp;ndash;&amp;gt;分配缓冲区(buffer)&amp;ndash;&amp;gt;从缓冲区中读取内容/将内容写入缓冲
-缓冲区内部细节: 缓冲区的底层实现可以看成是一个字节数组,
-三个变量 position:当前索引,也可以理解为指针所指的元素,初始值为0,指向第一个元素 limit:初始值为capacity,通过与position以clear函数和flip函数结合来确定写入写出的元素. capacity:总容量,可以理解为数组长度,limit&amp;lt;=capacity flip函数 1.将limit设置为position的值 2.将position设置为0 将buffer写入到输出通道时,调用此函数,注意在写入到输出通道时(foutchanel.write(buffer)), position会步进,而limit不变,所以想要循环读取时,需要调用clear函数重置缓冲区的状态.
-clear函数 1.将limit设置为capacity的值 2.将position设置为0
-文件输入输出流会记住输入输出的位置,每个字节仅能被读取一次.</description>
-    </item>
-    <item>
-      <title>Java中的synchronized和volatile</title>
-      <link>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84synchronized%E5%92%8Cvolatile_todo/</link>
-      <pubDate>Wed, 26 Oct 2016 14:08:22 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84synchronized%E5%92%8Cvolatile_todo/</guid>
-      <description>&lt;h2 id=&#34;volatile关键字&#34;&gt;volatile关键字&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;程序在运行时,为了提高性能可能会将主存中的变量拷贝到CPU缓存当中,
-&lt;ul&gt;
-&lt;li&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://7xkzud.com1.z0.glb.clouddn.com/16-10-26/52900619.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Java中的单例模式</title>
-      <link>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
-      <pubDate>Wed, 26 Oct 2016 13:35:40 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
-      <description>&lt;h1 id=&#34;java中的单例模式&#34;&gt;Java中的单例模式&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;多线程中可能会导致对象的多次初始化.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;懒汉式的实现&#34;&gt;懒汉式的实现&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;之所以成为懒汉,个人认为应该是类的初始化只在需要的时候进行,所以很&amp;quot;懒&amp;quot;.&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Java正则表达式SomeTips</title>
-      <link>https://blog.wuweizhao.com/posts/java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
-      <pubDate>Sun, 16 Oct 2016 20:29:12 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;默认的写法均为贪婪的&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;加?之后修改为最短匹配&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  Pattern pattern = Pattern.compile(&amp;quot;\\d{1,3}&amp;quot;);
-  String s = &amp;quot;123-456-789&amp;quot;;
-  Matcher matcher = pattern.matcher(s);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>JAVA中的引用</title>
-      <link>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8/</link>
-      <pubDate>Fri, 07 Oct 2016 20:09:10 +0000</pubDate>
-      <guid>https://blog.wuweizhao.com/posts/java%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8/</guid>
-      <description> String str=new String(&amp;quot;abc&amp;quot;); // 强引用 SoftReference&amp;lt;String&amp;gt; softRef=new SoftReference&amp;lt;String&amp;gt;(str); 弱引用WeakReference 比软引用更加弱，当垃圾收集器回收时就会被回收。 虚引用 </description>
-    </item>
-  </channel>
-</rss>

@@ -1,427 +1,0 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>springboot数据库与mybatis | 一亩三分地</title>
-<meta name="keywords" content="java, springboot">
-<meta name="description" content="springboot数据库与mybatis入门配置 初始化工程 参考链接:https://blog.csdn.net/typa01_kk/article/details/76696618
-数据库配置以及测试 在application.properties配置如下
-spring.datasource.url=jdbc:mysql://127.0.0.1:3306/testspring.datasource.username=rootspring.datasource.password=passwordspring.datasource.driver-class-name=com.mysql.jdbc.Driverspring.datasource.max-idle=10spring.datasource.max-wait=10000spring.datasource.min-idle=5spring.datasource.initial-size=5 通过jdbcTemplate的方式访问数据库
-@RunWith(SpringRunner.class)@SpringBootTestpublic class DemoSpringbootApplicationTests {@AutowiredJdbcTemplate jdbcTemplate;@Testpublic void contextLoads() {String sql = &#34;select * from user&#34;;List&lt;Map&lt;String, Object&gt;&gt; resultList = jdbcTemplate.queryForList(sql);System.out.println(&#34;query result:&#34; &#43; JSON.toJSONString(resultList));for (Map&lt;String, Object&gt; item: resultList) {for (Map.Entry&lt;String, Object&gt; entry: item.entrySet()) {System.out.println(entry.getKey() &#43; &#34;:&#34; &#43; entry.getValue().toString());System.out.println(&#34;\n&#34;);}}}} 日志打印如下:
-query result:[{&#34;id&#34;:1,&#34;name&#34;:&#34;test&#34;}]id:1name:test 成功访问数据库.">
-<meta name="author" content="">
-<link rel="canonical" href="https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4599eadb9eb2ad3d0a8d6827b41a8fda8f2f4af226b63466c09c5fddbc8706b7.css" integrity="sha256-RZnq256yrT0KjWgntBqP2o8vSvImtjRmwJxf3byHBrc=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.wuweizhao.com/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.wuweizhao.com/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.wuweizhao.com/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.wuweizhao.com/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.wuweizhao.com/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><meta property="og:title" content="springboot数据库与mybatis" />
-<meta property="og:description" content="springboot数据库与mybatis入门配置 初始化工程 参考链接:https://blog.csdn.net/typa01_kk/article/details/76696618
-数据库配置以及测试 在application.properties配置如下
-spring.datasource.url=jdbc:mysql://127.0.0.1:3306/testspring.datasource.username=rootspring.datasource.password=passwordspring.datasource.driver-class-name=com.mysql.jdbc.Driverspring.datasource.max-idle=10spring.datasource.max-wait=10000spring.datasource.min-idle=5spring.datasource.initial-size=5 通过jdbcTemplate的方式访问数据库
-@RunWith(SpringRunner.class)@SpringBootTestpublic class DemoSpringbootApplicationTests {@AutowiredJdbcTemplate jdbcTemplate;@Testpublic void contextLoads() {String sql = &#34;select * from user&#34;;List&lt;Map&lt;String, Object&gt;&gt; resultList = jdbcTemplate.queryForList(sql);System.out.println(&#34;query result:&#34; &#43; JSON.toJSONString(resultList));for (Map&lt;String, Object&gt; item: resultList) {for (Map.Entry&lt;String, Object&gt; entry: item.entrySet()) {System.out.println(entry.getKey() &#43; &#34;:&#34; &#43; entry.getValue().toString());System.out.println(&#34;\n&#34;);}}}} 日志打印如下:
-query result:[{&#34;id&#34;:1,&#34;name&#34;:&#34;test&#34;}]id:1name:test 成功访问数据库." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-03-18T21:01:35+00:00" />
-<meta property="article:modified_time" content="2019-03-18T21:01:35+00:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="springboot数据库与mybatis"/>
-<meta name="twitter:description" content="springboot数据库与mybatis入门配置 初始化工程 参考链接:https://blog.csdn.net/typa01_kk/article/details/76696618
-数据库配置以及测试 在application.properties配置如下
-spring.datasource.url=jdbc:mysql://127.0.0.1:3306/testspring.datasource.username=rootspring.datasource.password=passwordspring.datasource.driver-class-name=com.mysql.jdbc.Driverspring.datasource.max-idle=10spring.datasource.max-wait=10000spring.datasource.min-idle=5spring.datasource.initial-size=5 通过jdbcTemplate的方式访问数据库
-@RunWith(SpringRunner.class)@SpringBootTestpublic class DemoSpringbootApplicationTests {@AutowiredJdbcTemplate jdbcTemplate;@Testpublic void contextLoads() {String sql = &#34;select * from user&#34;;List&lt;Map&lt;String, Object&gt;&gt; resultList = jdbcTemplate.queryForList(sql);System.out.println(&#34;query result:&#34; &#43; JSON.toJSONString(resultList));for (Map&lt;String, Object&gt; item: resultList) {for (Map.Entry&lt;String, Object&gt; entry: item.entrySet()) {System.out.println(entry.getKey() &#43; &#34;:&#34; &#43; entry.getValue().toString());System.out.println(&#34;\n&#34;);}}}} 日志打印如下:
-query result:[{&#34;id&#34;:1,&#34;name&#34;:&#34;test&#34;}]id:1name:test 成功访问数据库."/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://blog.wuweizhao.com/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "springboot数据库与mybatis",
-      "item": "https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "springboot数据库与mybatis",
-  "name": "springboot数据库与mybatis",
-  "description": "springboot数据库与mybatis入门配置 初始化工程 参考链接:https://blog.csdn.net/typa01_kk/article/details/76696618\n数据库配置以及测试 在application.properties配置如下\nspring.datasource.url=jdbc:mysql://127.0.0.1:3306/test\rspring.datasource.username=root\rspring.datasource.password=password\rspring.datasource.driver-class-name=com.mysql.jdbc.Driver\rspring.datasource.max-idle=10\rspring.datasource.max-wait=10000\rspring.datasource.min-idle=5\rspring.datasource.initial-size=5 通过jdbcTemplate的方式访问数据库\n@RunWith(SpringRunner.class)\r@SpringBootTest\rpublic class DemoSpringbootApplicationTests {\r@Autowired\rJdbcTemplate jdbcTemplate;\r@Test\rpublic void contextLoads() {\rString sql = \u0026#34;select * from user\u0026#34;;\rList\u0026lt;Map\u0026lt;String, Object\u0026gt;\u0026gt; resultList = jdbcTemplate.queryForList(sql);\rSystem.out.println(\u0026#34;query result:\u0026#34; + JSON.toJSONString(resultList));\rfor (Map\u0026lt;String, Object\u0026gt; item: resultList) {\rfor (Map.Entry\u0026lt;String, Object\u0026gt; entry: item.entrySet()) {\rSystem.out.println(entry.getKey() + \u0026#34;:\u0026#34; + entry.getValue().toString());\rSystem.out.println(\u0026#34;\\n\u0026#34;);\r}\r}\r}\r} 日志打印如下:\nquery result:[{\u0026#34;id\u0026#34;:1,\u0026#34;name\u0026#34;:\u0026#34;test\u0026#34;}]\rid:1\rname:test 成功访问数据库.",
-  "keywords": [
-    "java", "springboot"
-  ],
-  "articleBody": "springboot数据库与mybatis入门配置 初始化工程 参考链接:https://blog.csdn.net/typa01_kk/article/details/76696618\n数据库配置以及测试 在application.properties配置如下\nspring.datasource.url=jdbc:mysql://127.0.0.1:3306/test\rspring.datasource.username=root\rspring.datasource.password=password\rspring.datasource.driver-class-name=com.mysql.jdbc.Driver\rspring.datasource.max-idle=10\rspring.datasource.max-wait=10000\rspring.datasource.min-idle=5\rspring.datasource.initial-size=5 通过jdbcTemplate的方式访问数据库\n@RunWith(SpringRunner.class)\r@SpringBootTest\rpublic class DemoSpringbootApplicationTests {\r@Autowired\rJdbcTemplate jdbcTemplate;\r@Test\rpublic void contextLoads() {\rString sql = \"select * from user\";\rList",
-  "wordCount" : "218",
-  "inLanguage": "en",
-  "datePublished": "2019-03-18T21:01:35Z",
-  "dateModified": "2019-03-18T21:01:35Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://blog.wuweizhao.com/posts/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8Emybatis/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "一亩三分地",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://blog.wuweizhao.com/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://blog.wuweizhao.com/" accesskey="h" title="一亩三分地 (Alt + H)">一亩三分地</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      springboot数据库与mybatis
-    </h1>
-    <div class="post-meta"><span title='2019-03-18 21:01:35 +0000 UTC'>March 18, 2019</span>
-
-</div>
-  </header> 
-  <div class="post-content"><h1 id="springboot数据库与mybatis入门配置">springboot数据库与mybatis入门配置<a hidden class="anchor" aria-hidden="true" href="#springboot数据库与mybatis入门配置">#</a></h1>
-<h2 id="初始化工程">初始化工程<a hidden class="anchor" aria-hidden="true" href="#初始化工程">#</a></h2>
-<p>参考链接:<code>https://blog.csdn.net/typa01_kk/article/details/76696618</code></p>
-<h2 id="数据库配置以及测试">数据库配置以及测试<a hidden class="anchor" aria-hidden="true" href="#数据库配置以及测试">#</a></h2>
-<p>在application.properties配置如下</p>
-<pre tabindex="0"><code>spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test
-spring.datasource.username=root
-spring.datasource.password=password
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.max-idle=10
-spring.datasource.max-wait=10000
-spring.datasource.min-idle=5
-spring.datasource.initial-size=5
-</code></pre><p>通过jdbcTemplate的方式访问数据库</p>
-<pre tabindex="0"><code>@RunWith(SpringRunner.class)
-@SpringBootTest
-public class DemoSpringbootApplicationTests {
-	@Autowired
-	JdbcTemplate jdbcTemplate;
-
-	@Test
-	public void contextLoads() {
-		String sql = &#34;select * from user&#34;;
-		List&lt;Map&lt;String, Object&gt;&gt; resultList = jdbcTemplate.queryForList(sql);
-		System.out.println(&#34;query result:&#34; + JSON.toJSONString(resultList));
-		for (Map&lt;String, Object&gt; item: resultList) {
-			for (Map.Entry&lt;String, Object&gt; entry: item.entrySet()) {
-				System.out.println(entry.getKey() + &#34;:&#34; + entry.getValue().toString());
-				System.out.println(&#34;\n&#34;);
-			}
-		}
-	}
-}
-</code></pre><p>日志打印如下:</p>
-<pre tabindex="0"><code>query result:[{&#34;id&#34;:1,&#34;name&#34;:&#34;test&#34;}]
-id:1
-
-
-name:test
-</code></pre><p>成功访问数据库.</p>
-<h2 id="mybatis配置">mybatis配置<a hidden class="anchor" aria-hidden="true" href="#mybatis配置">#</a></h2>
-<p>一般来讲,我们都是通过mybatis以及xml的方式访问数据库.</p>
-<p>添加dao接口</p>
-<pre tabindex="0"><code>/**
- * @author wuweizhao
- * @version 创建时间：2019/3/18 9:26 PM
- */
-@Mapper
-public interface UserMapper {
-	List&lt;Map&gt; querUser();
-}
-</code></pre><p>添加mapper.xml文件(文件位置:resources/mapper/UserMapper.xml)</p>
-<pre tabindex="0"><code>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34; &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;
-&lt;mapper namespace=&#34;com.example.demospringboot.dao.UserMapper&#34;&gt;
-	&lt;select id=&#34;querUser&#34; resultType=&#34;java.util.Map&#34;&gt;
-		SELECT
-		id,
-		name
-		FROM
-		user
-	&lt;/select&gt;
-&lt;/mapper&gt;
-</code></pre><p>添加配置信息(application.properties)</p>
-<pre tabindex="0"><code>mybatis.mapper-locations=classpath:mapper/**/*.xml
-</code></pre><p>编写测试代码</p>
-<pre tabindex="0"><code>@Autowired
-	UserMapper userMapper;
-	@Test
-	public void testMybatis() {
-		System.out.println(JSON.toJSONString(userMapper.querUser()));
-	}
-</code></pre><p>查看控制台打印信息</p>
-<pre tabindex="0"><code>[{&#34;name&#34;:&#34;test&#34;,&#34;id&#34;:1}]
-</code></pre><p>完整的application.properties配置文件如下</p>
-<pre tabindex="0"><code>spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test
-spring.datasource.username=root
-spring.datasource.password=password
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.max-idle=10
-spring.datasource.max-wait=10000
-spring.datasource.min-idle=5
-spring.datasource.initial-size=5
-
-server.port=8083
-server.tomcat.uri-encoding=UTF-8
-
-mybatis.mapper-locations=classpath:mapper/**/*.xml
-</code></pre><p>完整的pom.xml文件如下</p>
-<pre tabindex="0"><code>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
-&lt;project xmlns=&#34;http://maven.apache.org/POM/4.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;
-         xsi:schemaLocation=&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;&gt;
-	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-	&lt;parent&gt;
-		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-		&lt;version&gt;2.1.3.RELEASE&lt;/version&gt;
-		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
-	&lt;/parent&gt;
-	&lt;groupId&gt;com.example&lt;/groupId&gt;
-	&lt;artifactId&gt;demo-springboot&lt;/artifactId&gt;
-	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
-	&lt;name&gt;demo-springboot&lt;/name&gt;
-	&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
-
-	&lt;properties&gt;
-		&lt;java.version&gt;1.8&lt;/java.version&gt;
-	&lt;/properties&gt;
-
-	&lt;dependencies&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-
-		&lt;dependency&gt;
-			&lt;groupId&gt;mysql&lt;/groupId&gt;
-			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-			&lt;artifactId&gt;fastjson&lt;/artifactId&gt;
-			&lt;version&gt;1.2.47&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
-			&lt;version&gt;1.2.1&lt;/version&gt;
-		&lt;/dependency&gt;
-	&lt;/dependencies&gt;
-
-	&lt;build&gt;
-		&lt;plugins&gt;
-			&lt;plugin&gt;
-				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-			&lt;/plugin&gt;
-		&lt;/plugins&gt;
-	&lt;/build&gt;
-
-&lt;/project&gt;
-</code></pre><h2 id="参考">参考<a hidden class="anchor" aria-hidden="true" href="#参考">#</a></h2>
-<ol>
-<li><a href="https://blog.csdn.net/typa01_kk/article/details/76696618">https://blog.csdn.net/typa01_kk/article/details/76696618</a></li>
-<li><a href="https://blog.csdn.net/zhoujiyu123/article/details/79786847">https://blog.csdn.net/zhoujiyu123/article/details/79786847</a></li>
-</ol>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="https://blog.wuweizhao.com/tags/java/">Java</a></li>
-      <li><a href="https://blog.wuweizhao.com/tags/springboot/">Springboot</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2024 <a href="https://blog.wuweizhao.com/">一亩三分地</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
