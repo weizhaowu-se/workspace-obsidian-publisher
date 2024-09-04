@@ -7,7 +7,7 @@ share: "true"
 
 # 整體流程圖
 
-![79a72c7f2c1f7993f53385fa049ae1d2_MD5.png](/images/79a72c7f2c1f7993f53385fa049ae1d2_MD5.png)
+![attachments/79a72c7f2c1f7993f53385fa049ae1d2_MD5.png](../../images/79a72c7f2c1f7993f53385fa049ae1d2_MD5.png)
 
 要点说明：
 
