@@ -24,7 +24,7 @@ http://ibruce.info/2015/04/04/busuanzi/
 
 ## 实现效果
 
-![ebe17135db71431eeb05ae56aaf130d1_MD5.png](/images/ebe17135db71431eeb05ae56aaf130d1_MD5.png)
+![attachments/ebe17135db71431eeb05ae56aaf130d1_MD5.png](../../images/ebe17135db71431eeb05ae56aaf130d1_MD5.png)
 
 ## 遗留
 
