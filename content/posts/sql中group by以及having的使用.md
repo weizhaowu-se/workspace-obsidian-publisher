@@ -14,7 +14,7 @@ tags:
 <!--more-->
 * eg
 	* 存在一个表格,结构如下
-		* ![1e758679f32f40a3eff1b3d6db719f8b_MD5.png](/images/1e758679f32f40a3eff1b3d6db719f8b_MD5.png)
+		* ![attachments/1e758679f32f40a3eff1b3d6db719f8b_MD5.png](../../images/1e758679f32f40a3eff1b3d6db719f8b_MD5.png)
 		* [http://www.sqlcourse2.com/items_ordered.html](http://www.sqlcourse2.com/items_ordered.html)
 	* 将订单按照customerid进行分组,并且算出每一个客户对应的订单总价
 		
