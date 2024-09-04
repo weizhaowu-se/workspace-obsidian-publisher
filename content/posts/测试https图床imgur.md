@@ -15,8 +15,8 @@ tags:
 	* 腾讯云对象存储,这个似乎比较靠谱一些,只是没有一些比较趁手的工具
 * 估计还是得用imgur吧,或者用腾讯云,再或者就是尽量采用代码以及描述性的文字来写博客吧(┓( ´∀` )┏) 
 ## imgur图片测试
-* ![3d6a011ef197cb8f1e1bb0070c9d44c2_MD5.png](/images/3d6a011ef197cb8f1e1bb0070c9d44c2_MD5.png)
+* ![attachments/3d6a011ef197cb8f1e1bb0070c9d44c2_MD5.png](../../images/3d6a011ef197cb8f1e1bb0070c9d44c2_MD5.png)
 
 ## 腾讯云对象存储
-![52c43241c8ae5fc018f1485b34311d7b_MD5.jpg](/images/52c43241c8ae5fc018f1485b34311d7b_MD5.jpg)
+![attachments/52c43241c8ae5fc018f1485b34311d7b_MD5.jpg](../../images/52c43241c8ae5fc018f1485b34311d7b_MD5.jpg)
 
