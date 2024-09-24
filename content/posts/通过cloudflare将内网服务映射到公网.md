@@ -9,8 +9,8 @@ date: 2024-09-23 22:21:42
 3. 针对每个服务在cloudflare上配置对应的域名和转发
 # 将域名托管到cloudflare
 在域名注册商（此处为腾讯云）中，将DNS解析服务器设置为cloudflare对应的解析服务器【原先是右边的，需要修改为左边内容】，修改完成即可将域名添加到cloudflare中，cloudflare会自动将原先的DNS解析配置到cloudflare中
-[Open: Pasted image 20240923222733.png](../../images/5da442fe619b00781ee38f8b10ece401_MD5.jpeg)
-![Open: Pasted image 20240923222733.png](../../images/5da442fe619b00781ee38f8b10ece401_MD5.jpeg)
+
+![file-通过cloudflare将内网服务映射到公网-20240924222537588.png](../../images/file-%E9%80%9A%E8%BF%87cloudflare%E5%B0%86%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E6%98%A0%E5%B0%84%E5%88%B0%E5%85%AC%E7%BD%91-20240924222537588.png)
 
 # 群晖上部署cloudflare
 此处参照文章  [黑群晖服务使用 Cloudflare tunnel 进行内网穿透教程]( https://hackfang.me/nas-cloudflare-tunnel  )
@@ -19,7 +19,7 @@ date: 2024-09-23 22:21:42
 3. 启动完成之后，此时在cloudflare的tunnel中即可看到status变为绿色
 # 针对每个服务在cloudflare上配置对应的域名和转发
 点击隧道，进入Public Hostname，点击添加按钮
-[Open: Pasted image 20240923223530.png](../../images/2b124bc2b302291e3ef7d9c00ddbe119_MD5.jpeg)
-![Open: Pasted image 20240923223530.png](../../images/2b124bc2b302291e3ef7d9c00ddbe119_MD5.jpeg)
+![file-通过cloudflare将内网服务映射到公网-20240924222631900.png](../../images/file-%E9%80%9A%E8%BF%87cloudflare%E5%B0%86%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E6%98%A0%E5%B0%84%E5%88%B0%E5%85%AC%E7%BD%91-20240924222631900.png)
+
 添加完成之后，即可使用对应的子域名访问内网对应的服务了
 * 可以到DNS解析记录可以看到会自动添加一条子域名对应的解析记录，对应的解析值为隧道ID
