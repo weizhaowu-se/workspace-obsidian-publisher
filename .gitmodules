@@ -4,4 +4,3 @@
 [submodule "themes/PaperMod"]
 	path = themes/PaperMod
 	url = https://github.com/weizhaowu-se/hugo-PaperMod.git
-	branch = wwz
